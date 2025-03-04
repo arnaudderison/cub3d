@@ -55,6 +55,7 @@ $(OBJ_DIR)/%.o: src/%.c
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
+	@$(call stop_animation)
 	@rm -rf $(OBJ_DIR)
 	@echo "${YELLOW}[LIBFT] ${GREEN}Object files cleaned.${NC}"
 
