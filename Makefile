@@ -3,12 +3,12 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g3 -MD -MP
 I_LIBFT = ./include/lib/libft/include/
 I_CUBE = ./include/
-INCLUDES = -I$(I_LIBFT) -I$(I_CUBE)
+INCLUDES = -I$(I_LIBFT) -I$(I_CUBE) -I$(MLX_DIR)
 OBJ_DIR = obj
 LIBFT_DIR = ./include/lib/libft/
 MLX_DIR = ./include/lib/minilibx-linux/
 LIBFT = $(LIBFT_DIR)libft.a
-MLX_FLAGS = -L$(MLX_DIR) -lmlx -lX11
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz 
 
 RED=\033[0;31m
 GREEN=\033[0;32m
@@ -65,10 +65,12 @@ $(OBJ_DIR)/%.o: src/%.c
 		$(call start_animation); \
 	fi
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@$(call stop_animation)
 
 -include $(DEPS)
 
 clean:
+	@$(call stop_animation)
 	@make clean -C $(LIBFT_DIR) --no-print-directory
 	@rm -rf $(OBJ_DIR)
 	@echo "${YELLOW}[CUB3D] ${GREEN}Object files cleaned.${NC}"
