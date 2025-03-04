@@ -6,7 +6,9 @@ I_CUBE = ./include/
 INCLUDES = -I$(I_LIBFT) -I$(I_CUBE)
 OBJ_DIR = obj
 LIBFT_DIR = ./include/lib/libft/
+MLX_DIR = ./include/lib/minilibx-linux/
 LIBFT = $(LIBFT_DIR)libft.a
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -lX11
 
 RED=\033[0;31m
 GREEN=\033[0;32m
@@ -46,12 +48,16 @@ endef
 all: $(NAME)
 	@$(call stop_animation)
 
-$(NAME): $(LIBFT) $(CUBE_OBJS)
-	@$(CC) $(CFLAGS) $(INCLUDES) $(CUBE_OBJS) -L$(LIBFT_DIR) -lft -o $@
+$(NAME): libx $(LIBFT) $(CUBE_OBJS)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(CUBE_OBJS) -L$(LIBFT_DIR) $(MLX_FLAGS) -lft -o $@
 	@printf "\r${YELLOW}[CUB3D]${GREEN}    Executable $(NAME) created.\n${NC}"
 
 $(LIBFT):
 	@make -C $(LIBFT_DIR) --no-print-directory
+
+libx:
+	@make -C $(MLX_DIR) --no-print-directory
+	@printf "\r${YELLOW}[MINILIBX]${GREEN} OK\n${NC}"
 
 $(OBJ_DIR)/%.o: src/%.c
 	@mkdir -p $(@D)
