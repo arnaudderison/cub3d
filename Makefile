@@ -70,10 +70,10 @@ $(OBJ_DIR)/%.o: src/%.c
 -include $(DEPS)
 
 clean:
-	@$(call stop_animation)
 	@make clean -C $(LIBFT_DIR) --no-print-directory
-	@rm -rf $(OBJ_DIR)
+	@make clean -C $(MLX_DIR) --no-print-directory
 	@echo "${YELLOW}[CUB3D] ${GREEN}Object files cleaned.${NC}"
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
 	@make fclean -C $(LIBFT_DIR) --no-print-directory
