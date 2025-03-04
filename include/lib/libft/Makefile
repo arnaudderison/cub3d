@@ -55,12 +55,21 @@ $(OBJ_DIR)/%.o: src/%.c
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
+	@$(call stop_animation)
 	@rm -rf $(OBJ_DIR)
+<<<<<<< HEAD
 	@echo "${YELLOW}[LIBFT] ${GREEN}Object files cleaned.${NC}"
 
 fclean: clean
 	@rm -f $(LIBFT)
 	@echo "${YELLOW}[LIBFT] ${RED}All files removed.${NC}"
+=======
+	@echo "${GREEN}Fichiers objets nettoyés.${NC}"
+
+fclean: clean
+	@rm -f $(LIBFT)
+	@echo "${RED}Tous les fichiers ont été supprimés.${NC}"
+>>>>>>> 71bb5e25c9e239b78132d7d41057b326ae8d65a3
 
 re: fclean all
 
