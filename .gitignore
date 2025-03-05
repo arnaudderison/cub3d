@@ -12,3 +12,4 @@
 cub3d
 *.out
 
+/include/lib/minilbx*
