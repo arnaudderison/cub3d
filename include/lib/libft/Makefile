@@ -46,6 +46,7 @@ all: $(LIBFT)
 $(LIBFT): $(LIBFT_OBJS)
 	@ar rcs $@ $^
 	@printf "${YELLOW}\r[LIBFT]${GREEN}    $@ créé avec succès${NC}\n"
+	@$(call stop_animation)
 
 $(OBJ_DIR)/%.o: src/%.c
 	@mkdir -p $(@D)

@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: aderison <aderison@student.s19.be>         +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/03/05 19:00:25 by aderison          #+#    #+#              #
+#    Updated: 2025/03/05 20:32:30 by aderison         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = cub3d
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g3 -MD -MP
@@ -16,7 +28,12 @@ YELLOW=\033[1;33m
 CYAN=\033[0;36m
 NC=\033[0m
 
-CUBE_SRCS = src/main.c
+CUBE_SRCS = src/main.c \
+			src/exit/error.c \
+			src/exit/destroy_win.c \
+			src/init/init_mlx.c \
+			src/init/init_textures.c \
+			src/init/init_img.c 
 
 CUBE_OBJS = $(patsubst src/%.c,$(OBJ_DIR)/%.o,$(CUBE_SRCS))
 DEPS = $(CUBE_OBJS:.o=.d)
@@ -65,11 +82,11 @@ $(OBJ_DIR)/%.o: src/%.c
 		$(call start_animation); \
 	fi
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-	@$(call stop_animation)
 
 -include $(DEPS)
 
 clean:
+	@$(call stop_animation)
 	@make clean -C $(LIBFT_DIR) --no-print-directory
 	@make clean -C $(MLX_DIR) --no-print-directory
 	@echo "${YELLOW}[CUB3D] ${GREEN}Object files cleaned.${NC}"
