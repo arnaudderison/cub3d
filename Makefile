@@ -3,16 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aderison <aderison@student.s19.be>         +#+  +:+       +#+         #
+#    By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/05 19:00:25 by aderison          #+#    #+#              #
-#    Updated: 2025/03/05 20:32:30 by aderison         ###   ########.fr        #
+#    Updated: 2025/03/07 20:06:48 by arnaud           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -MD -MP
+CFLAGS = -Wall -Wextra -Werror -g3 -MD -MP -fsanitize=address
+
 I_LIBFT = ./include/lib/libft/include/
 I_CUBE = ./include/
 INCLUDES = -I$(I_LIBFT) -I$(I_CUBE) -I$(MLX_DIR)
@@ -33,7 +34,11 @@ CUBE_SRCS = src/main.c \
 			src/exit/destroy_win.c \
 			src/init/init_mlx.c \
 			src/init/init_textures.c \
-			src/init/init_img.c 
+			src/init/init_img.c \
+			src/graphics_engine/graphics_engine.c \
+			src/graphics_engine/raycasting.c \
+			src/graphics_engine/set_image_pixel.c \
+			src/graphics_engine/update_modify_texture.c
 
 CUBE_OBJS = $(patsubst src/%.c,$(OBJ_DIR)/%.o,$(CUBE_SRCS))
 DEPS = $(CUBE_OBJS:.o=.d)
