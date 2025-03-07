@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 16:56:36 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/07 19:14:42 by arnaud           ###   ########.fr       */
+/*   Updated: 2025/03/07 21:27:16 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	dda(t_cub3d *cub3d, t_radius *rad)
 	int	hit;
 
 	hit = 0;
-	while (hit == 0)
+	while (!hit)
 	{
 		if (rad->sidedistX < rad->sidedistY)
 		{
@@ -67,11 +67,11 @@ static void	dda(t_cub3d *cub3d, t_radius *rad)
 			rad->mapY += rad->stepY;
 			rad->side = 1;
 		}
-		if (rad->mapY < 0.25 || rad->mapY < 0.25
-			|| rad->mapY > cub3d->map.height - 0.25
-			|| rad->mapY > cub3d->map.width - 1.25)
-			break ;
-		else if (cub3d->map.matrice[rad->mapY][rad->mapX] > '0')
+		// if (rad->mapY < 0.25 || rad->mapY < 0.25
+		// 	|| rad->mapY > cub3d->map.height - 0.25
+		// 	|| rad->mapY > cub3d->map.width - 1.25)
+		// 	break ;
+		if (cub3d->map.matrice[rad->mapY][rad->mapX] > '0')
 			hit = 1;
 	}
 }
