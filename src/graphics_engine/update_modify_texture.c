@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:26:10 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/07 21:28:09 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/07 23:42:54 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	update_modify_textures(t_cub3d *cub3d, t_textures *tex, t_radius *rad,
 		if (color > 0)
 		{
 			cub3d->modify_textures[y][x] = color;
-			printf("y: %d\n", y);
 		}
 		y++;
 	}
