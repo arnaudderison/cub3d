@@ -6,7 +6,7 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:26:10 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/07 20:23:35 by arnaud           ###   ########.fr       */
+/*   Updated: 2025/03/07 21:33:03 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	update_modify_textures(t_cub3d *cub3d, t_textures *tex, t_radius *rad,
 		if (color > 0)
 		{
 			cub3d->modify_textures[y][x] = color;
-			printf("y: %d\n", y);
+			printf("y: %d || x: %d\n", y, x);
 		}
 		y++;
 	}
