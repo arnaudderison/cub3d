@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 20:22:56 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/07 20:03:45 by arnaud           ###   ########.fr       */
+/*   Updated: 2025/03/07 20:59:40 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ void	init_modify_textures(t_cub3d *cub3d)
 
 	if (cub3d->modify_textures)
 		ft_free_matrice(1, cub3d->modify_textures);
-	cub3d->modify_textures = ft_calloc(TEX_SIZE + 1,
+	cub3d->modify_textures = ft_calloc(WIN_HEIGHT + 1,
 		sizeof *cub3d->modify_textures);
 	// if (!cub3d->modify_textures)
 	// free
 	i = 0;
-	while (i < TEX_SIZE)
+	while (i < WIN_HEIGHT)
 	{
-		cub3d->modify_textures[i] = ft_calloc(TEX_SIZE + 1,
+		cub3d->modify_textures[i] = ft_calloc(WIN_WIDTH + 1,
 			sizeof *cub3d->modify_textures);
 		// if (!cub3d->modify_textures[i])
 		// free

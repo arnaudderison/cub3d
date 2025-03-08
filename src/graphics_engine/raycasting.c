@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 16:56:36 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/07 19:14:42 by arnaud           ###   ########.fr       */
+/*   Updated: 2025/03/07 23:48:42 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	dda(t_cub3d *cub3d, t_radius *rad)
 	int	hit;
 
 	hit = 0;
-	while (hit == 0)
+	while (!hit)
 	{
 		if (rad->sidedistX < rad->sidedistY)
 		{
@@ -71,25 +71,24 @@ static void	dda(t_cub3d *cub3d, t_radius *rad)
 			|| rad->mapY > cub3d->map.height - 0.25
 			|| rad->mapY > cub3d->map.width - 1.25)
 			break ;
-		else if (cub3d->map.matrice[rad->mapY][rad->mapX] > '0')
+		if (cub3d->map.matrice[rad->mapY][rad->mapX] > '0')
 			hit = 1;
 	}
 }
 
-static void	calculate_line_height(t_radius *rad, t_cub3d *cub3d,
-		t_player *player)
+static void	calculate_line_height(t_radius *rad, t_player *player)
 {
 	if (rad->side == 0)
 		rad->wall_dist = (rad->sidedistX - rad->deltadistX);
 	else
-		rad->wall_dist = (rad->sidedistY - rad->sidedistY);
-	rad->line_height = (int)(cub3d->map.height / rad->wall_dist);
-	rad->draw_start = -(rad->line_height) / 2 + cub3d->map.height / 2;
+		rad->wall_dist = (rad->sidedistY - rad->deltadistY);
+	rad->line_height = (int)((double)WIN_HEIGHT / rad->wall_dist);
+	rad->draw_start = -(rad->line_height) / 2 + WIN_HEIGHT / 2;
 	if (rad->draw_start < 0)
 		rad->draw_start = 0;
-	rad->draw_end = rad->line_height / 2 + cub3d->map.height / 2;
-	if (rad->draw_end >= cub3d->map.height)
-		rad->draw_end = cub3d->map.height - 1;
+	rad->draw_end = rad->line_height / 2 + WIN_HEIGHT / 2;
+	if (rad->draw_end >= WIN_HEIGHT)
+		rad->draw_end = WIN_HEIGHT - 1;
 	if (rad->side == 0)
 		rad->wallX = player->y + rad->wall_dist * rad->dirY;
 	else
@@ -106,11 +105,14 @@ t_status	raycasting(t_player *player, t_cub3d *cub3d)
 	rad = cub3d->radius;
 	while (x < WIN_WIDTH)
 	{
-		update_radius(x, &rad, player);
-		set_dda(&rad, player);
-		dda(cub3d, &rad);
-		calculate_line_height(&rad, cub3d, player);
-		update_modify_textures(cub3d, &cub3d->datatex, &rad, x);
+		if(x % 1 == 0)
+		{
+			update_radius(x, &rad, player);
+			set_dda(&rad, player);
+			dda(cub3d, &rad);
+			calculate_line_height(&rad, player);
+			update_modify_textures(cub3d, &cub3d->datatex, &rad, x);
+		}
 		x++;
 	}
 	return (SUCCESS);
