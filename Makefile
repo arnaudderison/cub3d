@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+         #
+#    By: aderison <aderison@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/05 19:00:25 by aderison          #+#    #+#              #
-#    Updated: 2025/03/07 20:06:48 by arnaud           ###   ########.fr        #
+#    Updated: 2025/03/10 17:18:27 by aderison         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,10 @@ CUBE_SRCS = src/main.c \
 			src/graphics_engine/graphics_engine.c \
 			src/graphics_engine/raycasting.c \
 			src/graphics_engine/set_image_pixel.c \
-			src/graphics_engine/update_modify_texture.c
+			src/graphics_engine/update_modify_texture.c \
+			src/moves/handler_move.c \
+			src/moves/key_listener.c \
+			src/moves/validate_move.c
 
 CUBE_OBJS = $(patsubst src/%.c,$(OBJ_DIR)/%.o,$(CUBE_SRCS))
 DEPS = $(CUBE_OBJS:.o=.d)

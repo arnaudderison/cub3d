@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 19:08:38 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/07 23:43:44 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:43:10 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	init_temp(t_cub3d *cub3d)
 	strcpy(carte[8], "111000010000111");
 	strcpy(carte[9], "111100000001111");
 	strcpy(carte[10], "111110000011111");
-	strcpy(carte[11], "111111000111111");
+	strcpy(carte[11], "111111111111111");
 	// Afficher le tableau pour vérifier que tout fonctionne
 	for (int i = 0; i < 12; i++)
 	{
@@ -89,7 +89,7 @@ static void	init_temp(t_cub3d *cub3d)
 	cub3d->player.x = 7;
 	cub3d->player.dirX = 0;
 	cub3d->player.dirY = -1;
-	cub3d->player.planeX = -1;
+	cub3d->player.planeX = -0.75;
 	cub3d->player.planeY = 0;
 }
 
@@ -101,9 +101,10 @@ int	main(void)
 	init_mlx(&cub3d);
 	init_temp(&cub3d);
 	init_textures(&cub3d);
-	// graphics_engine(&cub3d);
+	graphics_engine(&cub3d);
+	key_listener(&cub3d);
 	// ft_printf("test %c\n", cub3d.map.matrice[0][0]);
-	mlx_loop_hook(cub3d.win.mlx, &graphics_engine, &cub3d);
+	mlx_loop_hook(cub3d.win.mlx, &render, &cub3d);
 	mlx_loop(cub3d.win.mlx);
 	return (0);
 }

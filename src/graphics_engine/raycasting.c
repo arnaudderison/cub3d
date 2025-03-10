@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 16:56:36 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/07 23:48:42 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/10 16:02:59 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ t_status	raycasting(t_player *player, t_cub3d *cub3d)
 	rad = cub3d->radius;
 	while (x < WIN_WIDTH)
 	{
-		if(x % 1 == 0)
+		if(x % 2 == 0)
 		{
 			update_radius(x, &rad, player);
 			set_dda(&rad, player);

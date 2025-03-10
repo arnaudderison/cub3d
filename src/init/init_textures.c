@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 20:22:56 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/07 20:59:40 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:21:34 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	init_modify_textures(t_cub3d *cub3d)
 {
 	int	i;
 
-	if (cub3d->modify_textures)
-		ft_free_matrice(1, cub3d->modify_textures);
+	// if (cub3d->modify_textures)
+	// 	ft_free_matrice(1, cub3d->modify_textures);
 	cub3d->modify_textures = ft_calloc(WIN_HEIGHT + 1,
 		sizeof *cub3d->modify_textures);
 	// if (!cub3d->modify_textures)

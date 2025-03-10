@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:05:48 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/07 23:39:29 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/10 18:02:22 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,20 @@
 # include "mlx.h"
 # include <math.h>
 # include <stdbool.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
 
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
 
 # define TEX_SIZE 64
+
+# define KEY_A 0
+# define KEY_S 1
+# define KEY_D 2
+# define KEY_W 13
+
+# define MOVESPEED 0.0300
 
 typedef enum s_status
 {
@@ -93,10 +102,13 @@ typedef struct s_player
 {
 	double		x;
 	double		y;
+	int			moveX;
+	int			moveY;
 	double		dirX;
 	double		dirY;
 	double		planeX;
 	double		planeY;
+	int			is_in_move;
 }				t_player;
 
 typedef struct cub3d
@@ -128,5 +140,12 @@ void			update_modify_textures(t_cub3d *cub3d, t_textures *tex,
 					t_radius *rad, int x);
 t_status		raycasting(t_player *player, t_cub3d *cub3d);
 void			set_image_pixel(t_img *image, int x, int y, int color);
+int render(t_cub3d *cub3d);
+
+//moves
+int	validate_move(t_cub3d *cub3d, double new_x, double new_y);
+int	move_player(t_cub3d *cub3d);
+void key_listener(t_cub3d *cub3d);
+int	validate_move(t_cub3d *cub3d, double new_x, double new_y);
 
 #endif
