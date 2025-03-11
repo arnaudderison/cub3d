@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
+/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 19:08:38 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/10 17:43:10 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:45:25 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,20 @@ CETTE PARTIE EST TEMPORAIRE
 cette partie doit etre faites dans le parsing
 */
 #include <string.h>
+
+static unsigned long	convert_rgb_to_hex(int *rgb_tab)
+{
+	unsigned long	result;
+	int				r;
+	int				g;
+	int				b;
+
+	r = rgb_tab[0];
+	g = rgb_tab[1];
+	b = rgb_tab[2];
+	result = ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
+	return (result);
+}
 
 static void	init_temp(t_cub3d *cub3d)
 {
@@ -101,6 +115,17 @@ int	main(void)
 	init_mlx(&cub3d);
 	init_temp(&cub3d);
 	init_textures(&cub3d);
+	cub3d.datatex = (t_textures){0};
+	cub3d.datatex.floor = malloc(sizeof(int) * 4);
+	cub3d.datatex.floor[0] = 19;
+	cub3d.datatex.floor[1] = 42;
+	cub3d.datatex.floor[2] = 64;
+	cub3d.datatex.ceiling = malloc(sizeof(int) * 4);
+	cub3d.datatex.ceiling[0] = 52;
+	cub3d.datatex.ceiling[1] = 152;
+	cub3d.datatex.ceiling[2] = 219;
+	cub3d.datatex.hex_floor = convert_rgb_to_hex(cub3d.datatex.floor);
+	cub3d.datatex.hex_ceiling = convert_rgb_to_hex(cub3d.datatex.ceiling);
 	graphics_engine(&cub3d);
 	key_listener(&cub3d);
 	// ft_printf("test %c\n", cub3d.map.matrice[0][0]);
