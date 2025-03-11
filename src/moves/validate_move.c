@@ -6,7 +6,7 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:04:41 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/11 11:03:53 by arnaud           ###   ########.fr       */
+/*   Updated: 2025/03/11 16:00:17 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static bool	is_valid_pos(t_cub3d *cub3d, double x, double y)
 {
-	if (x < 0.50 || x >= cub3d->map.width - 1.25)
+	if (x < 1.25 || x >= cub3d->map.width - 2.25)
 		return (false);
-	if (y < 0.50 || y >= cub3d->map.height - 0.50)
+	if (y < 1.25 || y >= cub3d->map.height - 1.25)
 		return (false);
 	return (true);
 }

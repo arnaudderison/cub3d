@@ -6,13 +6,13 @@
 #    By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/05 19:00:25 by aderison          #+#    #+#              #
-#    Updated: 2025/03/11 10:27:34 by arnaud           ###   ########.fr        #
+#    Updated: 2025/03/11 15:16:12 by arnaud           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -MD -MP -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 -MD -MP
 
 I_LIBFT = ./include/lib/libft/include/
 I_CUBE = ./include/

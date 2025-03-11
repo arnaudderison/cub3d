@@ -6,7 +6,7 @@
 /*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 19:08:38 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/11 14:45:25 by arnaud           ###   ########.fr       */
+/*   Updated: 2025/03/11 15:45:18 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,16 @@ static void	init_temp(t_cub3d *cub3d)
 	}
 	// Copier les chaînes dans le tableau
 	strcpy(carte[0], "111111111111111");
-	strcpy(carte[1], "111111000111111");
-	strcpy(carte[2], "111110000011111");
-	strcpy(carte[3], "1111000N0001111");
-	strcpy(carte[4], "111000000000111");
-	strcpy(carte[5], "110000000000011");
-	strcpy(carte[6], "100001111100001");
-	strcpy(carte[7], "110000111000011");
-	strcpy(carte[8], "111000010000111");
-	strcpy(carte[9], "111100000001111");
-	strcpy(carte[10], "111110000011111");
+	strcpy(carte[1], "100000000000001");
+	strcpy(carte[2], "100000000000001");
+	strcpy(carte[3], "1000000N0000001");
+	strcpy(carte[4], "100000000000001");
+	strcpy(carte[5], "100000000000001");
+	strcpy(carte[6], "100000000000001");
+	strcpy(carte[7], "100000000000001");
+	strcpy(carte[8], "100000000000001");
+	strcpy(carte[9], "100000000000001");
+	strcpy(carte[10], "100000000000001");
 	strcpy(carte[11], "111111111111111");
 	// Afficher le tableau pour vérifier que tout fonctionne
 	for (int i = 0; i < 12; i++)
@@ -117,13 +117,13 @@ int	main(void)
 	init_textures(&cub3d);
 	cub3d.datatex = (t_textures){0};
 	cub3d.datatex.floor = malloc(sizeof(int) * 4);
-	cub3d.datatex.floor[0] = 19;
-	cub3d.datatex.floor[1] = 42;
-	cub3d.datatex.floor[2] = 64;
+	cub3d.datatex.floor[0] = 5;
+	cub3d.datatex.floor[1] = 19;
+	cub3d.datatex.floor[2] = 73;
 	cub3d.datatex.ceiling = malloc(sizeof(int) * 4);
-	cub3d.datatex.ceiling[0] = 52;
-	cub3d.datatex.ceiling[1] = 152;
-	cub3d.datatex.ceiling[2] = 219;
+	cub3d.datatex.ceiling[0] = 5;
+	cub3d.datatex.ceiling[1] = 6;
+	cub3d.datatex.ceiling[2] = 40;
 	cub3d.datatex.hex_floor = convert_rgb_to_hex(cub3d.datatex.floor);
 	cub3d.datatex.hex_ceiling = convert_rgb_to_hex(cub3d.datatex.ceiling);
 	graphics_engine(&cub3d);

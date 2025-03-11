@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
+/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 20:22:56 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/10 17:21:34 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:28:52 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	init_modify_textures(t_cub3d *cub3d)
 {
 	int	i;
 
-	// if (cub3d->modify_textures)
-	// 	ft_free_matrice(1, cub3d->modify_textures);
+	if (cub3d->modify_textures)
+		ft_free_matrice(1, &cub3d->modify_textures);
 	cub3d->modify_textures = ft_calloc(WIN_HEIGHT + 1,
 		sizeof *cub3d->modify_textures);
 	// if (!cub3d->modify_textures)
@@ -66,11 +66,11 @@ void	init_textures(t_cub3d *cub3d)
 	if (!cub3d->textures)
 		error(MALLOC, cub3d, &destroy_win);
 	cub3d->textures[0] = xpm_to_img(cub3d,
-		"src/assets/textures/wolfenstein/grey_stone.xpm");
+		"src/assets/textures/simonkraft/respawn_anchor_side0.xpm");
 	cub3d->textures[1] = xpm_to_img(cub3d,
-		"src/assets/textures/wolfenstein/purple_stone.xpm");
+		"src/assets/textures/simonkraft/respawn_anchor_side2.xpm");
 	cub3d->textures[2] = xpm_to_img(cub3d,
-		"src/assets/textures/wolfenstein/red_brick.xpm");
+		"src/assets/textures/simonkraft/respawn_anchor_side3.xpm");
 	cub3d->textures[3] = xpm_to_img(cub3d,
-		"src/assets/textures/wolfenstein/wood.xpm");
+		"src/assets/textures/simonkraft/respawn_anchor_side4.xpm");
 }
