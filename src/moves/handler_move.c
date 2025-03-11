@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handler_move.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
+/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:57:30 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/10 18:01:55 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/11 10:27:02 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,7 @@ int	move_player(t_cub3d *cub3d)
 		moved += move_player_left(cub3d);
 	if (cub3d->player.moveX == 1)
 		moved += move_player_right(cub3d);
+	if (cub3d->player.rotate != 0)
+		moved += rotate_player(cub3d, cub3d->player.rotate);
 	return (moved);
 }

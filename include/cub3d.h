@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
+/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:05:48 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/10 18:02:22 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/11 10:49:42 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 # include "colors.h"
 # include "libft.h"
 # include "mlx.h"
-# include <math.h>
-# include <stdbool.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
+# include <math.h>
+# include <stdbool.h>
 
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
@@ -31,7 +31,8 @@
 # define KEY_D 2
 # define KEY_W 13
 
-# define MOVESPEED 0.0300
+# define MOVESPEED 0.0700
+# define ROTSPEED 0.0600
 
 typedef enum s_status
 {
@@ -108,6 +109,7 @@ typedef struct s_player
 	double		dirY;
 	double		planeX;
 	double		planeY;
+	int			rotate;
 	int			is_in_move;
 }				t_player;
 
@@ -140,12 +142,12 @@ void			update_modify_textures(t_cub3d *cub3d, t_textures *tex,
 					t_radius *rad, int x);
 t_status		raycasting(t_player *player, t_cub3d *cub3d);
 void			set_image_pixel(t_img *image, int x, int y, int color);
-int render(t_cub3d *cub3d);
+int				render(t_cub3d *cub3d);
 
-//moves
-int	validate_move(t_cub3d *cub3d, double new_x, double new_y);
-int	move_player(t_cub3d *cub3d);
-void key_listener(t_cub3d *cub3d);
-int	validate_move(t_cub3d *cub3d, double new_x, double new_y);
+// moves
+int				move_player(t_cub3d *cub3d);
+void			key_listener(t_cub3d *cub3d);
+int				validate_move(t_cub3d *cub3d, double new_x, double new_y);
+int				rotate_player(t_cub3d *cub3d, double rotdir);
 
 #endif

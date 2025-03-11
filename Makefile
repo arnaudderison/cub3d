@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aderison <aderison@student.s19.be>         +#+  +:+       +#+         #
+#    By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/05 19:00:25 by aderison          #+#    #+#              #
-#    Updated: 2025/03/10 17:18:27 by aderison         ###   ########.fr        #
+#    Updated: 2025/03/11 10:27:34 by arnaud           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ CUBE_SRCS = src/main.c \
 			src/graphics_engine/update_modify_texture.c \
 			src/moves/handler_move.c \
 			src/moves/key_listener.c \
-			src/moves/validate_move.c
+			src/moves/validate_move.c \
+			src/moves/rotate.c
 
 CUBE_OBJS = $(patsubst src/%.c,$(OBJ_DIR)/%.o,$(CUBE_SRCS))
 DEPS = $(CUBE_OBJS:.o=.d)
