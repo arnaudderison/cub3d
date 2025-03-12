@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 19:08:38 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/11 15:45:18 by arnaud           ###   ########.fr       */
+/*   Updated: 2025/03/12 15:07:24 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static void	init_temp(t_cub3d *cub3d)
 	strcpy(carte[4], "100000000000001");
 	strcpy(carte[5], "100000000000001");
 	strcpy(carte[6], "100000000000001");
-	strcpy(carte[7], "100000000000001");
+	strcpy(carte[7], "100000010000001");
 	strcpy(carte[8], "100000000000001");
 	strcpy(carte[9], "100000000000001");
 	strcpy(carte[10], "100000000000001");
@@ -117,13 +117,13 @@ int	main(void)
 	init_textures(&cub3d);
 	cub3d.datatex = (t_textures){0};
 	cub3d.datatex.floor = malloc(sizeof(int) * 4);
-	cub3d.datatex.floor[0] = 5;
-	cub3d.datatex.floor[1] = 19;
-	cub3d.datatex.floor[2] = 73;
+	cub3d.datatex.floor[0] = 10;
+	cub3d.datatex.floor[1] = 38;
+	cub3d.datatex.floor[2] = 146;
 	cub3d.datatex.ceiling = malloc(sizeof(int) * 4);
-	cub3d.datatex.ceiling[0] = 5;
-	cub3d.datatex.ceiling[1] = 6;
-	cub3d.datatex.ceiling[2] = 40;
+	cub3d.datatex.ceiling[0] = 10;
+	cub3d.datatex.ceiling[1] = 12;
+	cub3d.datatex.ceiling[2] = 80;
 	cub3d.datatex.hex_floor = convert_rgb_to_hex(cub3d.datatex.floor);
 	cub3d.datatex.hex_ceiling = convert_rgb_to_hex(cub3d.datatex.ceiling);
 	graphics_engine(&cub3d);

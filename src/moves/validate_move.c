@@ -3,22 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   validate_move.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:04:41 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/11 16:00:17 by arnaud           ###   ########.fr       */
+/*   Updated: 2025/03/12 13:15:38 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+static bool is_wall(t_cub3d *cub3d, double x, double y)
+{
+	if(cub3d->map.matrice[(int)y][(int)x] == '1')
+		return (true);
+	return (false);
+}
+
 static bool	is_valid_pos(t_cub3d *cub3d, double x, double y)
 {
+	bool wall;
+	bool map;
+
+	map = true;
+	wall = false;
+	if(BONUS)
+		wall = is_wall(cub3d, x, y);
 	if (x < 1.25 || x >= cub3d->map.width - 2.25)
-		return (false);
+		map = false;
 	if (y < 1.25 || y >= cub3d->map.height - 1.25)
-		return (false);
-	return (true);
+		map = false;
+	return (map && !wall);
 }
 
 int	validate_move(t_cub3d *cub3d, double new_x, double new_y)

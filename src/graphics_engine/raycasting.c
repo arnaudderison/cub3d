@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 16:56:36 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/12 12:25:58 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/12 15:15:18 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	update_radius(int x, t_radius *rad, t_player *player)
 	rad->mapX = (int)player->x;
 	rad->mapY = (int)player->y;
 	rad->deltadistX = fabs(1 / rad->dirX);
-	rad->deltadistY = fabs(1 / rad->dirY);
+	rad->deltadistY = fabs(1 / rad->dirY); 
 }
 
 static void	set_dda(t_radius *rad, t_player *player)
@@ -103,13 +103,18 @@ t_status	raycasting(t_player *player, t_cub3d *cub3d)
 
 	x = 0;
 	rad = cub3d->radius;
+	// rad = (t_radius){0};
 	while (x < WIN_WIDTH)
 	{
-		update_radius(x, &rad, player);
-		set_dda(&rad, player);
-		dda(cub3d, &rad);
-		calculate_line_height(&rad, player);
-		update_modify_textures(cub3d, &cub3d->datatex, &rad, x);
+		// if(x % 2 == 0)
+		{
+
+			update_radius(x, &rad, player);
+			set_dda(&rad, player);
+			dda(cub3d, &rad);
+			calculate_line_height(&rad, player);
+			update_modify_textures(cub3d, &cub3d->datatex, &rad, x);
+		}
 		x++;
 	}
 	return (SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:05:48 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/12 12:51:31 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/12 15:07:53 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@
 
 # define MOVESPEED 0.2
 # define ROTSPEED 0.19
+
+#ifndef BONUS
+# define BONUS 1
+#endif
 
 typedef enum s_status
 {
