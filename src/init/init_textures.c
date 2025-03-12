@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 20:22:56 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/11 15:28:52 by arnaud           ###   ########.fr       */
+/*   Updated: 2025/03/12 12:30:16 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ void	init_modify_textures(t_cub3d *cub3d)
 		ft_free_matrice(1, &cub3d->modify_textures);
 	cub3d->modify_textures = ft_calloc(WIN_HEIGHT + 1,
 		sizeof *cub3d->modify_textures);
-	// if (!cub3d->modify_textures)
-	// free
+	if (!cub3d->modify_textures)
+		error(MALLOC, cub3d, &freeall);
 	i = 0;
 	while (i < WIN_HEIGHT)
 	{
 		cub3d->modify_textures[i] = ft_calloc(WIN_WIDTH + 1,
 			sizeof *cub3d->modify_textures);
-		// if (!cub3d->modify_textures[i])
-		// free
+		if (!cub3d->modify_textures[i])
+			error(MALLOC, cub3d, &freeall);
 		i++;
 	}
 }
@@ -64,7 +64,7 @@ void	init_textures(t_cub3d *cub3d)
 	// les fichiers xpm peuvent etre different mais pauline doit gerer ca
 	cub3d->textures = ft_calloc(5, sizeof(int *));
 	if (!cub3d->textures)
-		error(MALLOC, cub3d, &destroy_win);
+		error(MALLOC, cub3d, &freeall);
 	cub3d->textures[0] = xpm_to_img(cub3d,
 		"src/assets/textures/simonkraft/respawn_anchor_side0.xpm");
 	cub3d->textures[1] = xpm_to_img(cub3d,

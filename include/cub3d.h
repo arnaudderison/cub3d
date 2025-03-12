@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:05:48 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/11 14:18:52 by arnaud           ###   ########.fr       */
+/*   Updated: 2025/03/12 12:51:31 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,18 @@
 
 # include "colors.h"
 # include "libft.h"
+# include "player.h"
+# include "texture.h"
+# include "window.h"
+# include "radius.h"
 # include "mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <math.h>
 # include <stdbool.h>
 
-# define WIN_WIDTH 960
-# define WIN_HEIGHT 720
+# define WIN_WIDTH 1920	
+# define WIN_HEIGHT 1080
 
 # define TEX_SIZE 64
 
@@ -31,8 +35,8 @@
 # define KEY_D 2
 # define KEY_W 13
 
-# define MOVESPEED 0.0700
-# define ROTSPEED 0.0600
+# define MOVESPEED 0.2
+# define ROTSPEED 0.19
 
 typedef enum s_status
 {
@@ -43,79 +47,12 @@ typedef enum s_status
 	UNKNOWN = -3,
 }					t_status;
 
-typedef struct s_img
-{
-	void			*img;
-	int				*addr;
-	int pixel_bits; // taille d'un pixel
-	int size_line;  // taille d'une ligne de pixel
-	int endian;     // permet de savoir comment lire les pixels
-}					t_img;
-
-typedef struct s_textures
-{
-	char			*north;
-	char			*south;
-	char			*west;
-	char			*east;
-	int				x;
-	int				y;
-	double			step;
-	double			pos;
-	int				index;
-	int				*floor;
-	int				*ceiling;
-	unsigned int	hex_ceiling;
-	unsigned int	hex_floor;
-}					t_textures;
-
-typedef struct s_win
-{
-	void			*mlx;
-	void			*window;
-}					t_win;
-
 typedef struct s_map
 {
 	int				width;
 	int				height;
 	char			**matrice;
 }					t_map;
-
-typedef struct s_radius
-{
-	double			cameraX;
-	double			dirX;
-	double			dirY;
-	int				mapX;
-	int				mapY;
-	int				stepX;
-	int				stepY;
-	double			sidedistX;
-	double			sidedistY;
-	double			deltadistX;
-	double			deltadistY;
-	double			wallX;
-	double			wall_dist;
-	int				side;
-	int				line_height;
-	int				draw_start;
-	int				draw_end;
-}					t_radius;
-
-typedef struct s_player
-{
-	double			x;
-	double			y;
-	int				moveX;
-	int				moveY;
-	double			dirX;
-	double			dirY;
-	double			planeX;
-	double			planeY;
-	int				rotate;
-	int				is_in_move;
-}					t_player;
 
 typedef struct cub3d
 {
@@ -132,6 +69,7 @@ typedef struct cub3d
 void				error(t_status status, t_cub3d *cub3d,
 						void (*callback)(t_cub3d *));
 void				destroy_win(t_cub3d *cub3d);
+void freeall(t_cub3d *cub3d);
 
 // init
 void				init_mlx(t_cub3d *cub3d);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_listener.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:37:55 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/11 10:43:18 by arnaud           ###   ########.fr       */
+/*   Updated: 2025/03/12 12:33:14 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static int	key_press_handler(int key, t_cub3d *cub3d)
 
 static int	key_unpress_handler(int key, t_cub3d *cub3d)
 {
-	// if (key == XK_Escape)
-	// free and quit
+	if (key == XK_Escape)
+		error(SUCCESS, cub3d, &freeall);
 	if (key == XK_w && cub3d->player.moveY == 1)
 		cub3d->player.moveY = 0;
 	if (key == XK_s && cub3d->player.moveY == -1)

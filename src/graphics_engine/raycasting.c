@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 16:56:36 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/11 10:14:36 by arnaud           ###   ########.fr       */
+/*   Updated: 2025/03/12 12:25:58 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	dda(t_cub3d *cub3d, t_radius *rad)
 			|| rad->mapY > cub3d->map.height - 0.25
 			|| rad->mapY > cub3d->map.width - 1.25)
 			break ;
-		if (cub3d->map.matrice[rad->mapY][rad->mapX] > '0')
+		if (cub3d->map.matrice[rad->mapY][rad->mapX] == '1')
 			hit = 1;
 	}
 }
@@ -105,14 +105,11 @@ t_status	raycasting(t_player *player, t_cub3d *cub3d)
 	rad = cub3d->radius;
 	while (x < WIN_WIDTH)
 	{
-		if (x % 1 == 0)
-		{
-			update_radius(x, &rad, player);
-			set_dda(&rad, player);
-			dda(cub3d, &rad);
-			calculate_line_height(&rad, player);
-			update_modify_textures(cub3d, &cub3d->datatex, &rad, x);
-		}
+		update_radius(x, &rad, player);
+		set_dda(&rad, player);
+		dda(cub3d, &rad);
+		calculate_line_height(&rad, player);
+		update_modify_textures(cub3d, &cub3d->datatex, &rad, x);
 		x++;
 	}
 	return (SUCCESS);
