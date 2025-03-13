@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphics_engine.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
+/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 16:15:26 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/12 15:14:34 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/13 11:25:14 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	graphics_engine(t_cub3d *cub3d)
 
 int	render(t_cub3d *cub3d)
 {
-	cub3d->player.is_in_move = move_player(cub3d);
+	cub3d->player.is_in_move += move_player(cub3d);
 	if (cub3d->player.is_in_move == 0)
 		return (0);
 	graphics_engine(cub3d);

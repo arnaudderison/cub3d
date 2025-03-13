@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
+/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 19:08:38 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/12 15:07:24 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/13 18:10:48 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,14 @@ static void	init_temp(t_cub3d *cub3d)
 	// Copier les chaînes dans le tableau
 	strcpy(carte[0], "111111111111111");
 	strcpy(carte[1], "100000000000001");
-	strcpy(carte[2], "100000000000001");
-	strcpy(carte[3], "1000000N0000001");
-	strcpy(carte[4], "100000000000001");
-	strcpy(carte[5], "100000000000001");
-	strcpy(carte[6], "100000000000001");
-	strcpy(carte[7], "100000010000001");
-	strcpy(carte[8], "100000000000001");
-	strcpy(carte[9], "100000000000001");
+	strcpy(carte[2], "10000010000001");
+	strcpy(carte[3], "1111110N0000001");
+	strcpy(carte[4], "100001000000001");
+	strcpy(carte[5], "100001000000001");
+	strcpy(carte[6], "100001000000001");
+	strcpy(carte[7], "101111000000001");
+	strcpy(carte[8], "100000100000001");
+	strcpy(carte[9], "100000010000001");
 	strcpy(carte[10], "100000000000001");
 	strcpy(carte[11], "111111111111111");
 	// Afficher le tableau pour vérifier que tout fonctionne
@@ -129,6 +129,7 @@ int	main(void)
 	graphics_engine(&cub3d);
 	key_listener(&cub3d);
 	// ft_printf("test %c\n", cub3d.map.matrice[0][0]);
+	draw_minimap(&cub3d);
 	mlx_loop_hook(cub3d.win.mlx, &render, &cub3d);
 	mlx_loop(cub3d.win.mlx);
 	return (0);

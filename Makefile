@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aderison <aderison@student.s19.be>         +#+  +:+       +#+         #
+#    By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/05 19:00:25 by aderison          #+#    #+#              #
-#    Updated: 2025/03/12 12:31:53 by aderison         ###   ########.fr        #
+#    Updated: 2025/03/13 18:06:30 by arnaud           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -MD -MP
+CFLAGS = -Wall -Wextra -Werror -g3 -MD -MP -fsanitize=address
 
 I_LIBFT = ./include/lib/libft/include/
 I_CUBE = ./include/
@@ -36,6 +36,7 @@ CUBE_SRCS = src/main.c \
 			src/init/init_mlx.c \
 			src/init/init_textures.c \
 			src/init/init_img.c \
+			src/init/init_minimap.c \
 			src/graphics_engine/graphics_engine.c \
 			src/graphics_engine/raycasting.c \
 			src/graphics_engine/set_image_pixel.c \
@@ -43,7 +44,8 @@ CUBE_SRCS = src/main.c \
 			src/moves/handler_move.c \
 			src/moves/key_listener.c \
 			src/moves/validate_move.c \
-			src/moves/rotate.c
+			src/moves/rotate.c \
+			src/minimap/draw_minimap.c
 
 CUBE_OBJS = $(patsubst src/%.c,$(OBJ_DIR)/%.o,$(CUBE_SRCS))
 DEPS = $(CUBE_OBJS:.o=.d)

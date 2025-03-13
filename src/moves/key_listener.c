@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_listener.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
+/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:37:55 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/12 12:33:14 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/13 11:22:14 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,42 @@ static int	key_unpress_handler(int key, t_cub3d *cub3d)
 	return (0);
 }
 
+static void	wrap_mouse(t_cub3d *cub3d, int x, int y)
+{
+	if (x > WIN_WIDTH - DIST_EDGE_MOUSE_WRAP)
+	{
+		x = DIST_EDGE_MOUSE_WRAP;
+		mlx_mouse_move(cub3d->win.mlx, cub3d->win.window, x, y);
+	}
+	if (x < DIST_EDGE_MOUSE_WRAP)
+	{
+		x = WIN_WIDTH - DIST_EDGE_MOUSE_WRAP;
+		mlx_mouse_move(cub3d->win.mlx, cub3d->win.window, x, y);
+	}
+}
+
+static int	mouse_handler(int x, int y, t_cub3d *cub3d)
+{
+	static int	old_x = WIN_WIDTH / 2;
+
+	wrap_mouse(cub3d, x, y);
+	if (x == old_x)
+		return (0);
+	else if (x < old_x)
+		cub3d->player.is_in_move += rotate_player(cub3d, 1);
+	else if (x > old_x)
+		cub3d->player.is_in_move += rotate_player(cub3d, -1);
+	old_x = x;
+	return (0);;
+}
+
 void	key_listener(t_cub3d *cub3d)
 {
 	mlx_hook(cub3d->win.window, KeyPress, KeyPressMask, key_press_handler,
 		cub3d);
 	mlx_hook(cub3d->win.window, KeyRelease, KeyReleaseMask, key_unpress_handler,
 		cub3d);
+	if (BONUS)
+		mlx_hook(cub3d->win.window, MotionNotify, PointerMotionMask,
+			mouse_handler, cub3d);
 }
