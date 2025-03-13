@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:05:48 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/13 17:47:25 by arnaud           ###   ########.fr       */
+/*   Updated: 2025/03/13 20:56:07 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int				validate_move(t_cub3d *cub3d, double new_x, double new_y);
 int				rotate_player(t_cub3d *cub3d, double rotdir);
 
 //minimap
-void init_minimap(t_minimap *minimap);
-void draw_minimap(t_cub3d *cub3d);
+void init_minimap(t_minimap *minimap, t_cub3d *cub3d);
+void render_minimap(t_cub3d *cub3d, t_minimap *m);
 
 #endif

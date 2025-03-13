@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 13:55:27 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/13 17:49:20 by arnaud           ###   ########.fr       */
+/*   Updated: 2025/03/13 21:15:13 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,18 @@
 
 #include "window.h"
 
-#define HEIGHT_MM 150;
-#define WIDTH_MM 150;
-#define TILE_SIZE 5;
+#define HEIGHT_MM 150
+#define WIDTH_MM 150
+#define MMAP_SIZE 200
 
 typedef struct s_minimap
 {
+    char **map;
     int width;
     int height;
+    int size;
     int tile_size;
-    int viewX;
-    int viewY;
+    int view_dist;
     int startX;
     int startY;
     int endX;

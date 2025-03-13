@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 19:08:38 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/13 18:10:48 by arnaud           ###   ########.fr       */
+/*   Updated: 2025/03/13 19:32:56 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ int	main(void)
 	graphics_engine(&cub3d);
 	key_listener(&cub3d);
 	// ft_printf("test %c\n", cub3d.map.matrice[0][0]);
-	draw_minimap(&cub3d);
+	// draw_minimap(&cub3d);
 	mlx_loop_hook(cub3d.win.mlx, &render, &cub3d);
 	mlx_loop(cub3d.win.mlx);
 	return (0);

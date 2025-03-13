@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphics_engine.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 16:15:26 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/13 11:25:14 by arnaud           ###   ########.fr       */
+/*   Updated: 2025/03/13 20:59:43 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,11 @@ int	graphics_engine(t_cub3d *cub3d)
 	raycasting(&cub3d->player, cub3d);
 	start_time = clock();
 	render_frame(cub3d);
+	if(BONUS)
+	{
+		cub3d->minimap = (t_minimap){0};
+		init_minimap(&cub3d->minimap, cub3d);
+	}
 	end_time = clock();
 	elapsed_time = ((double)(end_time - start_time)) / CLOCKS_PER_SEC;
     fps = 1.0 / elapsed_time;
