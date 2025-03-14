@@ -6,13 +6,13 @@
 #    By: aderison <aderison@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/05 19:00:25 by aderison          #+#    #+#              #
-#    Updated: 2025/03/13 21:03:19 by aderison         ###   ########.fr        #
+#    Updated: 2025/03/14 16:31:36 by aderison         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -MD -MP -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 -MD -MP
 
 I_LIBFT = ./include/lib/libft/include/
 I_CUBE = ./include/

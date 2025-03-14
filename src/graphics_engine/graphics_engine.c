@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 16:15:26 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/13 20:59:43 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/14 16:32:35 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,26 +49,18 @@ static void	render_frame(t_cub3d *cub3d)
 	mlx_put_image_to_window(cub3d->win.mlx, cub3d->win.window, image.img, 0, 0);
 	mlx_destroy_image(cub3d->win.mlx, image.img);
 }
-#include <time.h>
 // gestion du raycasting et du rendu
 int	graphics_engine(t_cub3d *cub3d)
 {
-	clock_t start_time, end_time;
-	double elapsed_time, fps;
 	init_modify_textures(cub3d);
 	raycasting(&cub3d->player, cub3d);
-	start_time = clock();
 	render_frame(cub3d);
 	if(BONUS)
 	{
 		cub3d->minimap = (t_minimap){0};
 		init_minimap(&cub3d->minimap, cub3d);
 	}
-	end_time = clock();
-	elapsed_time = ((double)(end_time - start_time)) / CLOCKS_PER_SEC;
-    fps = 1.0 / elapsed_time;
 
-    printf("FPS: %.2f\n", fps); 
 	return (0);
 }
 
