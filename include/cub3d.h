@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:05:48 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/13 20:56:07 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/14 22:36:08 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct cub3d
 	int			**modify_textures;
 	t_minimap	minimap;
 	t_textures	datatex;
+	t_img frame;
 }				t_cub3d;
 
 // handle error
@@ -102,5 +103,6 @@ int				rotate_player(t_cub3d *cub3d, double rotdir);
 //minimap
 void init_minimap(t_minimap *minimap, t_cub3d *cub3d);
 void render_minimap(t_cub3d *cub3d, t_minimap *m);
+int maps_engine(t_cub3d *cub3d);
 
 #endif

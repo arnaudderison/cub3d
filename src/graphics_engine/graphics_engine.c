@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 16:15:26 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/14 16:32:35 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/14 22:41:48 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,38 +29,41 @@ static void	set_frame_image_pixel(t_cub3d *cub3d, t_img *image, int x, int y)
 
 static void	render_frame(t_cub3d *cub3d)
 {
-	t_img	image;
+	
 	int		x;
 	int		y;
 
-	image.img = NULL;
-	init_img(cub3d, &image, WIN_WIDTH, WIN_HEIGHT);
+	
 	y = 0;
 	while (y < WIN_HEIGHT)
 	{
 		x = 0;
 		while (x < WIN_WIDTH)
 		{
-			set_frame_image_pixel(cub3d, &image, x, y);
+			set_frame_image_pixel(cub3d, &cub3d->frame, x, y);
 			x++;
 		}
 		y++;
 	}
-	mlx_put_image_to_window(cub3d->win.mlx, cub3d->win.window, image.img, 0, 0);
-	mlx_destroy_image(cub3d->win.mlx, image.img);
+	mlx_put_image_to_window(cub3d->win.mlx, cub3d->win.window, cub3d->frame.img, 0, 0);
 }
 // gestion du raycasting et du rendu
 int	graphics_engine(t_cub3d *cub3d)
 {
+	t_img	image;
+
+	image.img = NULL;
+	cub3d->frame = image;
+	init_img(cub3d, &cub3d->frame, WIN_WIDTH, WIN_HEIGHT);
 	init_modify_textures(cub3d);
 	raycasting(&cub3d->player, cub3d);
 	render_frame(cub3d);
 	if(BONUS)
 	{
-		cub3d->minimap = (t_minimap){0};
-		init_minimap(&cub3d->minimap, cub3d);
+		
+		maps_engine(cub3d);
 	}
-
+	mlx_destroy_image(cub3d->win.mlx, cub3d->frame.img);
 	return (0);
 }
 

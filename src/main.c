@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 19:08:38 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/14 16:30:40 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/14 22:15:01 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ int	main(void)
 	cub3d.datatex.ceiling[2] = 80;
 	cub3d.datatex.hex_floor = convert_rgb_to_hex(cub3d.datatex.floor);
 	cub3d.datatex.hex_ceiling = convert_rgb_to_hex(cub3d.datatex.ceiling);
+	init_minimap(&cub3d.minimap, &cub3d);
 	graphics_engine(&cub3d);
 	key_listener(&cub3d);
 	// ft_printf("test %c\n", cub3d.map.matrice[0][0]);

@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:06:39 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/14 16:31:02 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/14 22:44:25 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,27 @@
 # define MMAP_COLOR_FLOOR 0xE6E6E6
 # define MMAP_COLOR_SPACE 0x7F8C8D
 
-static void	draw_pixels(t_minimap *minimap, int x, int y, int color)
+static void	draw_pixels(t_cub3d* cub3d, int x, int y, int color)
 {
 	int	i;
 	int	j;
+    t_minimap *minimap;
 
+    minimap = &cub3d->minimap;
 	i = 0;
 	while (i < minimap->tile_size)
 	{
 		j = 0;
 		while (j < minimap->tile_size)
 		{
-			set_image_pixel(&minimap->image, x + j, i + y, color);
+			set_image_pixel(&cub3d->frame, x + j + 100, i + y + 100, color);
 			j++;
 		}
 		i++;
 	}
 }
 
-static void draw_circle(t_minimap *minimap, int center_x, int center_y, int radius, int color)
+static void draw_circle(t_cub3d* cub3d, int center_x, int center_y, int radius, int color)
 {
     int x;
     int y;
@@ -46,34 +48,32 @@ static void draw_circle(t_minimap *minimap, int center_x, int center_y, int radi
         x = -sqrt(radius * radius - y * y);
         while (x <= sqrt(radius * radius - y * y))
         {
-            set_image_pixel(&minimap->image, center_x + x, center_y + y, color);
+            set_image_pixel(&cub3d->frame, center_x + x + 100, center_y + y + 100, color);
             x++;
         }
         y++;
     }
 }
 
-static void draw_tiles(t_player player, t_minimap *m, int x, int y)
+static void draw_tiles(t_cub3d *cub3d, t_minimap *m, int x, int y)
 {
     double playerX;
     double playerY;
+    t_player player;
 
+    player = cub3d->player;
     playerX = (player.x - m->startX);
     playerY = (player.y - m->startY);
     if(m->map[y][x] == '0')
-        draw_pixels(m, x * m->tile_size, y * m->tile_size, MMAP_COLOR_FLOOR);
-    else if(m->map[y][x] == 'P')
-    {
-        draw_pixels(m, x * m->tile_size, y * m->tile_size, MMAP_COLOR_FLOOR);
-    }
+        draw_pixels(cub3d, x * m->tile_size, y * m->tile_size, MMAP_COLOR_FLOOR);
     else if(m->map[y][x] == '1')
-        draw_pixels(m, x * m->tile_size, y * m->tile_size, MMAP_COLOR_WALL);
+        draw_pixels(cub3d, x * m->tile_size, y * m->tile_size, MMAP_COLOR_WALL);
     else
-        draw_pixels(m, x * m->tile_size, y * m->tile_size, MMAP_COLOR_SPACE);
-    draw_circle(m, (playerX * m->tile_size), (playerY * m->tile_size), m->tile_size / 3, MMAP_COLOR_PLAYER);
+        draw_pixels(cub3d, x * m->tile_size, y * m->tile_size, MMAP_COLOR_SPACE);
+    draw_circle(cub3d, (playerX * m->tile_size), (playerY * m->tile_size), m->tile_size / 3, MMAP_COLOR_PLAYER);
 }
 
-static void draw_minimap(t_player player,  t_minimap *m)
+static void draw_minimap(t_cub3d *cub3d,  t_minimap *m)
 {
     int x;
     int y;
@@ -87,20 +87,20 @@ static void draw_minimap(t_player player,  t_minimap *m)
             if (!m->map[y] || !m->map[y][x]
 				|| m->map[y][x] == '\0')
 				break ;
-            draw_tiles(player, m, x, y);
+            draw_tiles(cub3d, m, x, y);
         }
     }
 }
 
 void render_minimap(t_cub3d *cub3d, t_minimap *m)
 {
-    int img_size;
-    int map_size;
+    // int img_size;
+    // int map_size;
 
-    map_size = MMAP_SIZE;
-    img_size = MMAP_SIZE + m->tile_size;
-    init_img(cub3d, &cub3d->minimap.image, img_size, img_size);
-    draw_minimap(cub3d->player, m);
-    mlx_put_image_to_window(cub3d->win.mlx, cub3d->win.window, cub3d->minimap.image.img, m->tile_size, WIN_HEIGHT - (map_size + (m->tile_size * 2)) );
-   mlx_destroy_image(cub3d->win.mlx, cub3d->minimap.image.img);
+    // map_size = MMAP_SIZE;
+    // img_size = MMAP_SIZE + m->tile_size;
+    // init_img(cub3d, &cub3d->minimap.image, img_size, img_size);
+    draw_minimap(cub3d, m);
+//     mlx_put_image_to_window(cub3d->win.mlx, cub3d->win.window, cub3d->minimap.image.img, m->tile_size, WIN_HEIGHT - (map_size + (m->tile_size * 2)) );
+//    mlx_destroy_image(cub3d->win.mlx, cub3d->minimap.image.img);
 }
