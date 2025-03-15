@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 19:08:38 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/14 22:15:01 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/15 18:54:10 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,12 @@ static void	init_temp(t_cub3d *cub3d)
 	// Copier les chaînes dans le tableau
 	strcpy(carte[0], "111111111111111");
 	strcpy(carte[1], "100000000000001");
-	strcpy(carte[2], "10000010000001");
+	strcpy(carte[2], "100000100000001");
 	strcpy(carte[3], "1111110N0000001");
 	strcpy(carte[4], "100001000000001");
 	strcpy(carte[5], "100001000000001");
 	strcpy(carte[6], "100001000000001");
-	strcpy(carte[7], "101111000000001");
+	strcpy(carte[7], "1D1111000000001");
 	strcpy(carte[8], "100000100000001");
 	strcpy(carte[9], "100000010000001");
 	strcpy(carte[10], "100000000000001");

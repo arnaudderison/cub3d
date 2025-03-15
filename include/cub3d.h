@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:05:48 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/14 22:36:08 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/15 19:40:28 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,9 @@ void			update_modify_textures(t_cub3d *cub3d, t_textures *tex,
 t_status		raycasting(t_player *player, t_cub3d *cub3d);
 void			set_image_pixel(t_img *image, int x, int y, int color);
 int				render(t_cub3d *cub3d);
+
+//door
+bool player_near_door(t_player *player, int porteX, int porteY);
 
 // moves
 int				move_player(t_cub3d *cub3d);

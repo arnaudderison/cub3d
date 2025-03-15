@@ -6,13 +6,13 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 16:15:26 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/14 22:41:48 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/15 18:49:18 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	set_frame_image_pixel(t_cub3d *cub3d, t_img *image, int x, int y)
+static void	set_image_pixels(t_cub3d *cub3d, t_img *image, int x, int y)
 {
 	if (cub3d->modify_textures[y][x] > 0)
 		set_image_pixel(image, x, y, cub3d->modify_textures[y][x]);
@@ -37,12 +37,9 @@ static void	render_frame(t_cub3d *cub3d)
 	y = 0;
 	while (y < WIN_HEIGHT)
 	{
-		x = 0;
-		while (x < WIN_WIDTH)
-		{
-			set_frame_image_pixel(cub3d, &cub3d->frame, x, y);
-			x++;
-		}
+		x = -1;
+		while (++x < WIN_WIDTH)
+			set_image_pixels(cub3d, &cub3d->frame, x, y);
 		y++;
 	}
 	mlx_put_image_to_window(cub3d->win.mlx, cub3d->win.window, cub3d->frame.img, 0, 0);

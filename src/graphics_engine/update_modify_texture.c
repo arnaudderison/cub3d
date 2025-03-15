@@ -6,12 +6,16 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:26:10 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/10 18:03:09 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/15 21:07:58 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+static bool is_door(t_cub3d *cub3d, int x, int y)
+{
+	return (cub3d->map.matrice[y][x] == 'D');
+}
 static void	get_texture_index(t_cub3d *cub3d, t_radius *rad)
 {
 	if (rad->side == 0)
@@ -49,12 +53,15 @@ void	update_modify_textures(t_cub3d *cub3d, t_textures *tex, t_radius *rad,
 		tex->y = (int)tex->pos & (TEX_SIZE - 1);
 		tex->pos += tex->step;
 		color = cub3d->textures[tex->index][TEX_SIZE * tex->y + tex->x];
-		// if (tex->index == 0 || tex->index == 2)
+		// if (tex->index == 0 || tex->index == 2)                                                                                                                                               
 		// 	color = (color >> 1) & 8355711;
-		if (color > 0)
+		if(is_door(cub3d, rad->mapX, rad->mapY))
 		{
-			cub3d->modify_textures[y][x] = color;
+			// printf("je suis une porte\n");
+			color = 0x11111111;
 		}
+		// if (color > 0)
+		cub3d->modify_textures[y][x] = color;
 		y++;
 	}
 }

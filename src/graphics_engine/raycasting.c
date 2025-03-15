@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 16:56:36 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/13 20:11:13 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/15 19:46:35 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,16 @@ static void	dda(t_cub3d *cub3d, t_radius *rad)
 			|| rad->mapY > cub3d->map.height - 0.25
 			|| rad->mapY > cub3d->map.width - 1.25)
 			break ;
-		if (cub3d->map.matrice[rad->mapY][rad->mapX] == '1')
+		if(cub3d->map.matrice[rad->mapY][rad->mapX] == 'D' || cub3d->map.matrice[rad->mapY][rad->mapX] == 'O')
+		{
+			if(player_near_door(&cub3d->player, rad->mapX, rad->mapY))
+			{
+				cub3d->map.matrice[rad->mapY][rad->mapX] = 'O';
+			}
+			else
+				cub3d->map.matrice[rad->mapY][rad->mapX] = 'D';
+		}
+		if (cub3d->map.matrice[rad->mapY][rad->mapX] == '1' || cub3d->map.matrice[rad->mapY][rad->mapX] == 'D')
 			hit = 1;
 	}
 }
