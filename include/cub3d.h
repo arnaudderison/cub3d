@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:05:48 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/15 19:40:28 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/16 00:37:54 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct cub3d
 	int			**modify_textures;
 	t_minimap	minimap;
 	t_textures	datatex;
+	int time_counter;
 	t_img frame;
 }				t_cub3d;
 

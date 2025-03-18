@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 16:56:36 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/15 19:46:35 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/16 00:38:17 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ t_status	raycasting(t_player *player, t_cub3d *cub3d)
 
 	x = 0;
 	rad = cub3d->radius;
+	cub3d->time_counter++;
 	// rad = (t_radius){0};
 	while (x < WIN_WIDTH)
 	{
