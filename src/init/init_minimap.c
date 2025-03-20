@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:00:00 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/14 22:10:11 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/20 12:20:40 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,24 @@ static int	get_map_offset(t_minimap *minimap, int mapsize, int pos)
 	return (0);
 }
 
-static void update_mmap(t_cub3d *cub3d, t_minimap *m)
+static void	update_mmap(t_cub3d *cub3d, t_minimap *m)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = -1;
-	while(++y < m->size)
+	while (++y < m->size)
 	{
 		x = -1;
-		while(++x < m->size)
+		while (++x < m->size)
 		{
-			if (cub3d->map.matrice[y + m->startY][x + m->startX] == '1')
+			if (cub3d->map.matrice[y + m->starty][x + m->startx] == '1')
 				m->map[y][x] = '1';
-			else if (cub3d->map.matrice[y + m->startY][x + m->startX] == '0'
-				|| cub3d->map.matrice[y + m->startY][x + m->startX] == 'N' || cub3d->map.matrice[y + m->startY][x + m->startX] == 'S' || cub3d->map.matrice[y + m->startY][x + m->startX] == 'W' || cub3d->map.matrice[y + m->startY][x + m->startX] == 'E')
+			else if (cub3d->map.matrice[y + m->starty][x + m->startx] == '0'
+				|| cub3d->map.matrice[y + m->starty][x + m->startx] == 'N'
+				|| cub3d->map.matrice[y + m->starty][x + m->startx] == 'S'
+				|| cub3d->map.matrice[y + m->starty][x + m->startx] == 'W'
+				|| cub3d->map.matrice[y + m->starty][x + m->startx] == 'E')
 				m->map[y][x] = '0';
 			else
 				m->map[y][x] = '\0';
@@ -43,87 +46,41 @@ static void update_mmap(t_cub3d *cub3d, t_minimap *m)
 	}
 }
 
-// static char	*add_line(t_cub3d *cub3d, t_minimap *m, int y)
-// {
-// 	char	*line;
-// 	int		x;
-
-// 	line = ft_calloc(m->size + 1, sizeof(char));
-// 	if (!line)
-// 		return (NULL);
-// 	x = 0;
-// 	while (x < m->size && x < cub3d->map.width)
-// 	{
-// 		if (!(y + m->startY < cub3d->map.height)
-// 			|| !(x + m->startX < cub3d->map.width))
-// 			line[x] = '\0';
-// 		else if ((int)cub3d->player.x == (x + m->startX)
-// 			&& (int)cub3d->player.y == (y + m->startY))
-// 			line[x] = 'P';
-// 		else if (cub3d->map.matrice[y + m->startY][x + m->startX] == '1')
-// 			line[x] = '1';
-// 		else if (cub3d->map.matrice[y + m->startY][x + m->startX] == '0' || cub3d->map.matrice[y + m->startY][x + m->startX] == 'N' || cub3d->map.matrice[y + m->startY][x + m->startX] == 'S' || cub3d->map.matrice[y + m->startY][x + m->startX] == 'W' || cub3d->map.matrice[y + m->startY][x + m->startX] == 'E')
-// 			line[x] = '0';
-// 		else
-// 			line[x] = '\0';
-// 		x++;
-// 	}
-// 	return (line);
-// }
-
-// static char **create_minimap(t_cub3d *cub3d, t_minimap *minimap)
-// {
-//     char **mmap;
-//     int y;
-
-//     mmap = ft_calloc(minimap->size + 1, sizeof(char *));
-//     // erreu si NULL
-//     y = 0;
-//     while(y < minimap->size && y < cub3d->map.height)
-//     {
-//         mmap[y] = add_line(cub3d, minimap, y);
-//         //free
-//         y++;
-//     }
-//     return (mmap);
-// }
-
-static char **create_minimap(t_cub3d *cub3d, t_minimap *minimap)
+static char	**create_minimap(t_cub3d *cub3d, t_minimap *minimap)
 {
-	char **mmap;
-    int y;
+	char	**mmap;
+	int		y;
 
 	mmap = ft_calloc(minimap->size + 1, sizeof(char *));
-	//si erreur free
+	// si erreur free
 	y = -1;
-	while(++y < minimap->size && y < cub3d->map.height)
+	while (++y < minimap->size && y < cub3d->map.height)
 	{
 		mmap[y] = ft_calloc(minimap->size + 1, sizeof(char));
-		//free
+		// free
 	}
 	return (mmap);
 }
 
-void init_minimap(t_minimap *minimap, t_cub3d *cub3d)
+void	init_minimap(t_minimap *minimap, t_cub3d *cub3d)
 {
-    *minimap = (t_minimap){0};
+	*minimap = (t_minimap){0};
 	minimap->width = WIDTH_MM;
-    minimap->height = HEIGHT_MM;
-    minimap->view_dist = 5;
-    minimap->size = (2 * minimap->view_dist) + 1;
-    minimap->tile_size = MMAP_SIZE / (2 * minimap->view_dist);
+	minimap->height = HEIGHT_MM;
+	minimap->view_dist = 5;
+	minimap->size = (2 * minimap->view_dist) + 1;
+	minimap->tile_size = MMAP_SIZE / (2 * minimap->view_dist);
 	minimap->map = create_minimap(cub3d, minimap);
-	// minimap->image = (t_img){0};
-	// init_img(cub3d, &cub3d->minimap.image, MMAP_SIZE + minimap->tile_size, MMAP_SIZE + minimap->tile_size);
 }
 
-int maps_engine(t_cub3d *cub3d)
+int	maps_engine(t_cub3d *cub3d)
 {
-    cub3d->minimap.startX = get_map_offset(&cub3d->minimap, cub3d->map.width, (int)cub3d->player.x);
-    cub3d->minimap.startY = get_map_offset(&cub3d->minimap, cub3d->map.height, (int)cub3d->player.y);
-    update_mmap(cub3d, &cub3d->minimap);
-    cub3d->minimap.image = (t_img){0};
-    render_minimap(cub3d, &cub3d->minimap);
-    // ft_free_matrice(1, &minimap->map);
-	return 0;
+	cub3d->minimap.startx = get_map_offset(&cub3d->minimap, cub3d->map.width,
+			(int)cub3d->player.x);
+	cub3d->minimap.starty = get_map_offset(&cub3d->minimap, cub3d->map.height,
+			(int)cub3d->player.y);
+	update_mmap(cub3d, &cub3d->minimap);
+	cub3d->minimap.image = (t_img){0};
+	render_minimap(cub3d, &cub3d->minimap);
+	return (0);
 }

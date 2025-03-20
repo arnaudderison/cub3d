@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 10:20:47 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/12 14:08:23 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/20 12:22:46 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,12 @@ static int	rotate(t_cub3d *cub3d, double rotspeed)
 	double		tmp_x;
 
 	p = &cub3d->player;
-	tmp_x = p->dirX;
-	// Si rotspeed est positif, on tourne à gauche (antihoraire)
-	// Si rotspeed est négatif, on tourne à droite (horaire)
-	p->dirX = p->dirX * cos(rotspeed) - p->dirY * sin(rotspeed);
-	p->dirY = tmp_x * sin(rotspeed) + p->dirY * cos(rotspeed);
-	tmp_x = p->planeX;
-	p->planeX = p->planeX * cos(rotspeed) - p->planeY * sin(rotspeed);
-	p->planeY = tmp_x * sin(rotspeed) + p->planeY * cos(rotspeed);
+	tmp_x = p->dirx;
+	p->dirx = p->dirx * cos(rotspeed) - p->diry * sin(rotspeed);
+	p->diry = tmp_x * sin(rotspeed) + p->diry * cos(rotspeed);
+	tmp_x = p->planex;
+	p->planex = p->planex * cos(rotspeed) - p->planey * sin(rotspeed);
+	p->planey = tmp_x * sin(rotspeed) + p->planey * cos(rotspeed);
 	return (1);
 }
 

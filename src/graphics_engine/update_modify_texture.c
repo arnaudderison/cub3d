@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:26:10 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/15 21:07:58 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/20 12:19:14 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,19 @@ static bool is_door(t_cub3d *cub3d, int x, int y)
 {
 	return (cub3d->map.matrice[y][x] == 'D');
 }
+
 static void	get_texture_index(t_cub3d *cub3d, t_radius *rad)
 {
 	if (rad->side == 0)
 	{
-		if (rad->dirX < 0)
+		if (rad->dirx < 0)
 			cub3d->datatex.index = 3;
 		else
 			cub3d->datatex.index = 2;
 	}
 	else
 	{
-		if (rad->dirY > 0)
+		if (rad->diry > 0)
 			cub3d->datatex.index = 1;
 		else
 			cub3d->datatex.index = 0;
@@ -41,8 +42,8 @@ void	update_modify_textures(t_cub3d *cub3d, t_textures *tex, t_radius *rad,
 	int	color;
 
 	get_texture_index(cub3d, rad);
-	tex->x = (int)(rad->wallX * TEX_SIZE);
-	if ((rad->side == 0 && rad->dirX < 0) || (rad->side == 1 && rad->dirY > 0))
+	tex->x = (int)(rad->wallx * TEX_SIZE);
+	if ((rad->side == 0 && rad->dirx < 0) || (rad->side == 1 && rad->diry > 0))
 		tex->x = TEX_SIZE - tex->x - 1;
 	tex->step = 1.0 * TEX_SIZE / rad->line_height;
 	tex->pos = (rad->draw_start - WIN_HEIGHT / 2 + rad->line_height / 2)
@@ -53,15 +54,10 @@ void	update_modify_textures(t_cub3d *cub3d, t_textures *tex, t_radius *rad,
 		tex->y = (int)tex->pos & (TEX_SIZE - 1);
 		tex->pos += tex->step;
 		color = cub3d->textures[tex->index][TEX_SIZE * tex->y + tex->x];
-		// if (tex->index == 0 || tex->index == 2)                                                                                                                                               
-		// 	color = (color >> 1) & 8355711;
-		if(is_door(cub3d, rad->mapX, rad->mapY))
-		{
-			// printf("je suis une porte\n");
+		if(is_door(cub3d, rad->mapx, rad->mapy))
 			color = 0x11111111;
-		}
-		// if (color > 0)
-		cub3d->modify_textures[y][x] = color;
+		if (color > 0)
+			cub3d->modify_textures[y][x] = color;
 		y++;
 	}
 }
