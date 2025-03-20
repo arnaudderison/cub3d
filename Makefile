@@ -1,6 +1,19 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: plachard <plachard@student.s19.be>         +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/03/05 19:00:25 by aderison          #+#    #+#              #
+#    Updated: 2025/03/20 22:03:33 by plachard         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = cub3d
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -MD -MP
+CFLAGS = -Wall -Wextra -Werror -g3 -MD -MP -fsanitize=address 
+
 I_LIBFT = ./include/lib/libft/include/
 I_CUBE = ./include/
 INCLUDES = -I$(I_LIBFT) -I$(I_CUBE) -I$(MLX_DIR)
@@ -16,7 +29,37 @@ YELLOW=\033[1;33m
 CYAN=\033[0;36m
 NC=\033[0m
 
-CUBE_SRCS = src/main.c
+# MAPS = \
+#     src/assets/maps/good/cheese_maze.cub \
+#     src/assets/maps/good/creepy.cub \
+#     src/assets/maps/good/dungeon.cub \
+#     src/assets/maps/good/library.cub \
+#     src/assets/maps/good/matrix.cub \
+#     src/assets/maps/good/sad_face.cub \
+#     src/assets/maps/good/square_map.cub \
+#     src/assets/maps/good/subject_map.cub \
+#     src/assets/maps/good/test_map.cub \
+#     src/assets/maps/good/test_map_hole.cub \
+#     src/assets/maps/good/test_pos_bottom.cub \
+#     src/assets/maps/good/test_pos_left.cub \
+#     src/assets/maps/good/test_pos_right.cub \
+#     src/assets/maps/good/test_pos_top.cub \
+#     src/assets/maps/good/test_textures.cub \
+#     src/assets/maps/good/test_whitespace.cub \
+#     src/assets/maps/good/works.cub
+	
+CUBE_SRCS = src/main.c \
+			src/exit/error.c \
+			src/exit/destroy_win.c \
+			src/parsing/parsing.c \
+			src/parsing/init_data.c \
+			src/parsing/init_datatex.c \
+			src/parsing/init_player.c \
+			src/parsing/init_map.c \
+			src/parsing/parse_map.c \
+			src/parsing/init_color.c \
+			src/parsing/utils.c \
+			src/parsing/debug.c 
 
 CUBE_OBJS = $(patsubst src/%.c,$(OBJ_DIR)/%.o,$(CUBE_SRCS))
 DEPS = $(CUBE_OBJS:.o=.d)
@@ -47,7 +90,7 @@ endef
 
 all: $(NAME)
 	@$(call stop_animation)
-
+	
 $(NAME): libx $(LIBFT) $(CUBE_OBJS)
 	@$(CC) $(CFLAGS) $(INCLUDES) $(CUBE_OBJS) -L$(LIBFT_DIR) $(MLX_FLAGS) -lft -o $@
 	@printf "\r${YELLOW}[CUB3D]${GREEN}    Executable $(NAME) created.\n${NC}"
@@ -65,11 +108,11 @@ $(OBJ_DIR)/%.o: src/%.c
 		$(call start_animation); \
 	fi
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-	@$(call stop_animation)
 
 -include $(DEPS)
-
+	
 clean:
+	@$(call stop_animation)
 	@make clean -C $(LIBFT_DIR) --no-print-directory
 	@make clean -C $(MLX_DIR) --no-print-directory
 	@echo "${YELLOW}[CUB3D] ${GREEN}Object files cleaned.${NC}"

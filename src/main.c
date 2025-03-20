@@ -3,30 +3,82 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
+/*   By: plachard <plachard@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 19:08:38 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/04 21:31:28 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/18 12:07:23 by plachard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include <stdlib.h>
+#include "cub3d.h"
 
-int	main(void)
+static void free_tex(t_cub3d *cub3d)
 {
-	void	*mlx;
-	void	*win;
+	if (cub3d->datatex.north)
+		ft_free(1, &cub3d->datatex.north);
+	if (cub3d->datatex.south)
+		ft_free(1, &cub3d->datatex.south);	
+	if (cub3d->datatex.east)
+		ft_free(1, &cub3d->datatex.east);	
+	if (cub3d->datatex.west)
+		ft_free(1, &cub3d->datatex.west);
+	if (cub3d->datatex.floor)
+		ft_free(1, &cub3d->datatex.floor);
+	if (cub3d->datatex.ceiling)
+		ft_free(1, &cub3d->datatex.ceiling);
 
-	// Initialiser MiniLibX
-	mlx = mlx_init();
-	if (!mlx)
+}
+
+static void free_all(t_cub3d *cub3d)
+{
+    if (!cub3d)
+	{
+        exit(EXIT_FAILURE);
+	}
+	if (cub3d->data)
+		ft_free_matrice(1, &cub3d->data);
+	if (cub3d->map.matrice)
+				ft_free_matrice(1, &cub3d->map.matrice);
+	if (&cub3d->datatex != NULL)
+		free_tex(cub3d);
+    if(cub3d->textures)
+        ft_free_matrice(1, &cub3d->textures);
+    if(cub3d->modify_textures)
+        ft_free_matrice(1, &cub3d->modify_textures);
+    // if(cub3d->minimap.map)
+    //     ft_free_matrice(1, &cub3d->minimap.map);
+    destroy_win(cub3d);
+}
+
+static void	init_data_clean(t_cub3d *cub3d)
+{
+	cub3d->player = (t_player){0};
+	cub3d->player.x = -1;
+	cub3d->player.y = -1;
+	cub3d->map = (t_map){0};
+	cub3d->map.height = WIN_HEIGHT;
+	cub3d->map.width = WIN_WIDTH;
+	cub3d->radius = (t_radius){0};
+	cub3d->win = (t_win){0};
+	cub3d->datatex = (t_textures){0};
+	cub3d->datatex.size = TEX_SIZE;
+}
+
+int	main(int ac, char **av)
+{
+	t_cub3d	cub3d;
+
+	if (ac != 2)
 		return (1);
-	// Créer une fenêtre 500x500
-	win = mlx_new_window(mlx, 500, 500, "Test MiniLibX");
-	if (!win)
+	cub3d = (t_cub3d){0};
+	init_data_clean(&cub3d);
+	if (parsing(av, &cub3d) != SUCCESS)
+	{
+		free_all(&cub3d);
+		write (1,"Error\n", 6);
 		return (1);
-	// Afficher la fenêtre et attendre
-	mlx_loop(mlx);
+	}
+	print_cub3d(&cub3d);
+	free_all(&cub3d);
 	return (0);
 }
