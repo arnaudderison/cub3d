@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 19:08:38 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/20 13:17:26 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:54:10 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ int	main(void)
 	init_mlx(&cub3d);
 	init_temp(&cub3d);
 	init_textures(&cub3d);
+	cub3d.errinfo = (t_errinfo){0};
 	cub3d.time_counter = 0;
 	cub3d.datatex = (t_textures){0};
 	cub3d.datatex.floor = malloc(sizeof(int) * 4);

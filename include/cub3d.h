@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:05:48 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/20 16:37:04 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/20 20:38:04 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <X11/keysym.h>
 # include <math.h>
 # include <stdbool.h>
+# include <stdio.h>
 
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
@@ -58,6 +59,12 @@ typedef enum s_status
 	UNKNOWN = -3,
 }				t_status;
 
+typedef struct s_errinfo
+{
+	int			line;
+	char		*file;
+}				t_errinfo;
+
 typedef struct s_map
 {
 	int			width;
@@ -77,13 +84,15 @@ typedef struct cub3d
 	t_textures	datatex;
 	int			time_counter;
 	t_img		frame;
+	t_errinfo	errinfo;
 }				t_cub3d;
 
 // handle error
-void			error(t_status status, t_cub3d *cub3d,
+void			error(t_status status, t_errinfo *info, t_cub3d *cub3d,
 					void (*callback)(t_cub3d *));
 void			destroy_win(t_cub3d *cub3d);
 void			freeall(t_cub3d *cub3d);
+void			set_errinfo(t_errinfo *errinfo, int line, char *file);
 
 // init
 void			init_mlx(t_cub3d *cub3d);
@@ -103,8 +112,8 @@ void			draw_star(t_cub3d *cub3d, t_img *image, int x, int y);
 unsigned int	random2d(int x, int y);
 
 // door
-void handle_door(t_cub3d *cub3d, t_radius *rad, int *hit);
-bool is_close_door(t_cub3d *cub3d, int x, int y);
+void			handle_door(t_cub3d *cub3d, t_radius *rad, int *hit);
+bool			is_close_door(t_cub3d *cub3d, int x, int y);
 
 // moves
 int				move_player(t_cub3d *cub3d);

@@ -6,7 +6,7 @@
 #    By: aderison <aderison@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/05 19:00:25 by aderison          #+#    #+#              #
-#    Updated: 2025/03/20 13:28:02 by aderison         ###   ########.fr        #
+#    Updated: 2025/03/20 16:56:38 by aderison         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ CUBE_SRCS = src/main.c \
 			src/exit/error.c \
 			src/exit/destroy_win.c \
 			src/exit/freeall.c \
+			src/exit/set_errinfo.c \
 			src/init/init_mlx.c \
 			src/init/init_textures.c \
 			src/init/init_img.c \

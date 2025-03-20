@@ -1,37 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   radius.h                                           :+:      :+:    :+:   */
+/*   set_errinfo.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 12:50:12 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/20 20:38:13 by aderison         ###   ########.fr       */
+/*   Created: 2025/03/20 16:54:44 by aderison          #+#    #+#             */
+/*   Updated: 2025/03/20 20:36:06 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RADIUS_H
-# define RADIUS_H
+#include "cub3d.h"
 
-typedef struct s_radius
+void	set_errinfo(t_errinfo *errinfo, int line, char *file)
 {
-	double	camerax;
-	double	dirx;
-	double	diry;
-	int		mapx;
-	int		mapy;
-	int		stepx;
-	int		stepy;
-	double	sidedistx;
-	double	sidedisty;
-	double	deltadistx;
-	double	deltadisty;
-	double	wallx;
-	double	wall_dist;
-	int		side;
-	int		line_height;
-	int		draw_start;
-	int		draw_end;
-}			t_radius;
-
-#endif
+	errinfo->file = file;
+	errinfo->line = line;
+}

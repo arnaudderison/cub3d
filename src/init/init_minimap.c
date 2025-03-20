@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:00:00 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/20 12:20:40 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/20 20:37:46 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,21 @@ static char	**create_minimap(t_cub3d *cub3d, t_minimap *minimap)
 	int		y;
 
 	mmap = ft_calloc(minimap->size + 1, sizeof(char *));
-	// si erreur free
+	if (!mmap)
+	{
+		set_errinfo(&cub3d->errinfo, __LINE__, __FILE__);
+		error(MALLOC, &cub3d->errinfo, cub3d, &freeall);
+	}
 	y = -1;
 	while (++y < minimap->size && y < cub3d->map.height)
 	{
 		mmap[y] = ft_calloc(minimap->size + 1, sizeof(char));
-		// free
+		if (!mmap[y])
+		{
+			ft_free_matrice(1, &mmap);
+			set_errinfo(&cub3d->errinfo, __LINE__, __FILE__);
+			error(MALLOC, &cub3d->errinfo, cub3d, &freeall);
+		}
 	}
 	return (mmap);
 }
