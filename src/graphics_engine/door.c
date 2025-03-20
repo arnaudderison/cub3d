@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 19:31:53 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/20 16:27:26 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:39:22 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@ static void toggle_door(t_cub3d *cub3d, int x, int y)
 		cub3d->map.matrice[y][x] = 'D';
 }
 
-void handle_door(t_cub3d *cub3d, t_radius *rad)
+void handle_door(t_cub3d *cub3d, t_radius *rad, int *hit)
 {
+	if(is_close_door(cub3d, rad->mapx, rad->mapy))
+		*hit = 1;
 	if(is_door(cub3d, rad->mapx, rad->mapy))
 			toggle_door(cub3d, rad->mapx, rad->mapy);
 }

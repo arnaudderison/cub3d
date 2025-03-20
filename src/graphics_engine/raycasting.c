@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 16:56:36 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/20 16:26:29 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:36:58 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	dda(t_cub3d *cub3d, t_radius *rad)
 		if (rad->sidedistx < rad->sidedisty)
 		{
 			rad->sidedistx += rad->deltadistx;
-			(rad->mapx += rad->stepx);
+			rad->mapx += rad->stepx;
 			rad->side = 0;
 		}
 		else
@@ -68,11 +68,11 @@ static void	dda(t_cub3d *cub3d, t_radius *rad)
 			rad->side = 1;
 		}
 		if (rad->mapy < 0.25 || rad->mapy < 0.25
-			|| rad->mapy > cub3d->map.height - 0.25 
+			|| rad->mapy > cub3d->map.height - 0.25
 			|| rad->mapy > cub3d->map.width - 1.25)
 			break ;
-		handle_door(cub3d,rad);
-		if (cub3d->map.matrice[rad->mapy][rad->mapx] == '1' || is_close_door(cub3d, rad->mapx, rad->mapy))
+		handle_door(cub3d, rad, &hit);
+		if (cub3d->map.matrice[rad->mapy][rad->mapx] == '1')
 			hit = 1;
 	}
 }

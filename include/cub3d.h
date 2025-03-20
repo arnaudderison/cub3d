@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:05:48 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/20 16:27:28 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:37:04 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void			draw_star(t_cub3d *cub3d, t_img *image, int x, int y);
 unsigned int	random2d(int x, int y);
 
 // door
-void handle_door(t_cub3d *cub3d, t_radius *rad);
+void handle_door(t_cub3d *cub3d, t_radius *rad, int *hit);
 bool is_close_door(t_cub3d *cub3d, int x, int y);
 
 // moves
