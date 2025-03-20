@@ -6,7 +6,7 @@
 /*   By: plachard <plachard@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:05:48 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/20 22:03:54 by plachard         ###   ########.fr       */
+/*   Updated: 2025/03/20 22:37:36 by plachard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,6 @@ typedef struct cub3d
 
 // parsing
 t_status 			parsing(char **av, t_cub3d *cub3d);
-t_status			is_ext(char *file, bool cub);
 t_status			init_data(char *file, t_cub3d *cub3d);
 t_status			init_datatex(t_cub3d *cub3d, char **data);
 t_status			init_map(t_cub3d *cub3d);
@@ -154,6 +153,8 @@ t_status			init_color(t_cub3d *cub3d);
 
 	// utils
 bool				is_tex(char *path);
+t_status			is_ext(char *file, bool cub);
+
 	// debug
 void 				print_cub3d(t_cub3d *cub3d);
 

@@ -6,7 +6,7 @@
 /*   By: plachard <plachard@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 01:29:40 by plachard          #+#    #+#             */
-/*   Updated: 2025/03/19 16:21:15 by plachard         ###   ########.fr       */
+/*   Updated: 2025/03/20 22:34:40 by plachard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,5 @@ t_status	init_datatex(t_cub3d *cub3d, char **data)
 		}
 		++i;
 	}
-	printf("datatex init SUCCESS\n");
 	return (SUCCESS);
 }

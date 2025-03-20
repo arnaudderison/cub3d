@@ -6,7 +6,7 @@
 /*   By: plachard <plachard@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 01:17:28 by plachard          #+#    #+#             */
-/*   Updated: 2025/03/19 16:27:48 by plachard         ###   ########.fr       */
+/*   Updated: 2025/03/20 22:31:46 by plachard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static t_status	data_dup(char *file, t_cub3d *cub3d)
 	return (SUCCESS);
 }
 
-int	count_line(char *line, int fd)
+static int	count_line(char *line, int fd)
 {
 	char	*tmp;
 	int		n;
@@ -114,21 +114,10 @@ t_status	init_data(char *file, t_cub3d *cub3d)
 	int	status;
 
 	status = data_alloc(file, cub3d);
-	if (status == -1)
+	if (status != SUCCESS)
 		return (status);
-	printf("data alloc OK\n");
 	status = data_dup(file, cub3d);
 	if (status != SUCCESS)
 		return (status);
-	printf("data dup OK\n");
-	status = init_datatex(cub3d, cub3d->data);
-	if (status != SUCCESS)
-		return (status);
-	printf("data datatex OK\n");
-	status = init_map(cub3d);
-	if (status != SUCCESS)
-		return (status);
-	printf("init map OK\n");
-	printf("data init SUCCESS\n");
 	return (SUCCESS);
 }

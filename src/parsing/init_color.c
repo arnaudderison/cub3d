@@ -6,7 +6,7 @@
 /*   By: plachard <plachard@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 01:33:12 by plachard          #+#    #+#             */
-/*   Updated: 2025/03/19 14:25:46 by plachard         ###   ########.fr       */
+/*   Updated: 2025/03/20 22:35:06 by plachard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,13 @@ static unsigned long	rgb_to_hex(int *rgb_tab)
 static bool	open_tex(t_textures data_tex)
 {
 	if (is_ext(data_tex.north, false) != SUCCESS)
-	{
-		printf("datatex north = %s\n", data_tex.north);
 		return (false);
-	}
 	if (is_ext(data_tex.south, false) != SUCCESS)
-	{
-		printf("datatex south = %s\n", data_tex.south);
 		return (false);
-	}
 	if (is_ext(data_tex.east, false) != SUCCESS)
-	{
-		printf("datatex east = %s\n", data_tex.east);
 		return (false);
-	}
 	if (is_ext(data_tex.west, false) != SUCCESS)
-	{
-		printf("datatex west = %s\n", data_tex.west);
 		return (false);
-	}
 	return (true);
 }
 

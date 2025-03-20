@@ -6,7 +6,7 @@
 /*   By: plachard <plachard@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 01:32:43 by plachard          #+#    #+#             */
-/*   Updated: 2025/03/20 22:06:54 by plachard         ###   ########.fr       */
+/*   Updated: 2025/03/20 22:34:14 by plachard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ static t_status	map_alloc(t_cub3d *cub3d)
 	if (!cub3d->map.matrice)
 		return (FAILED);
 	cub3d->map.width = width;
-	printf("map alloc SUCCESS\n");
 	return (SUCCESS);
 }
 
