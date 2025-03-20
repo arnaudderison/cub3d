@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:05:48 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/16 00:37:54 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/20 12:04:55 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 # include "colors.h"
 # include "libft.h"
+# include "minimap.h"
 # include "mlx.h"
 # include "player.h"
 # include "radius.h"
 # include "texture.h"
-# include "minimap.h"
 # include "window.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
@@ -70,8 +70,8 @@ typedef struct cub3d
 	int			**modify_textures;
 	t_minimap	minimap;
 	t_textures	datatex;
-	int time_counter;
-	t_img frame;
+	int			time_counter;
+	t_img		frame;
 }				t_cub3d;
 
 // handle error
@@ -95,8 +95,8 @@ t_status		raycasting(t_player *player, t_cub3d *cub3d);
 void			set_image_pixel(t_img *image, int x, int y, int color);
 int				render(t_cub3d *cub3d);
 
-//door
-bool player_near_door(t_player *player, int porteX, int porteY);
+// door
+bool			player_near_door(t_player *player, int porteX, int porteY);
 
 // moves
 int				move_player(t_cub3d *cub3d);
@@ -104,9 +104,9 @@ void			key_listener(t_cub3d *cub3d);
 int				validate_move(t_cub3d *cub3d, double new_x, double new_y);
 int				rotate_player(t_cub3d *cub3d, double rotdir);
 
-//minimap
-void init_minimap(t_minimap *minimap, t_cub3d *cub3d);
-void render_minimap(t_cub3d *cub3d, t_minimap *m);
-int maps_engine(t_cub3d *cub3d);
+// minimap
+void			init_minimap(t_minimap *minimap, t_cub3d *cub3d);
+void			render_minimap(t_cub3d *cub3d, t_minimap *m);
+int				maps_engine(t_cub3d *cub3d);
 
 #endif

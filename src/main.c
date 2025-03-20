@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 19:08:38 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/15 18:54:10 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/20 12:23:04 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,10 +101,10 @@ static void	init_temp(t_cub3d *cub3d)
 	cub3d->map.height = 12;
 	cub3d->player.y = 3;
 	cub3d->player.x = 7;
-	cub3d->player.dirX = 0;
-	cub3d->player.dirY = -1;
-	cub3d->player.planeX = -0.75;
-	cub3d->player.planeY = 0;
+	cub3d->player.dirx = 0;
+	cub3d->player.diry = -1;
+	cub3d->player.planex = -0.75;
+	cub3d->player.planey = 0;
 }
 
 int	main(void)

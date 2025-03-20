@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:37:07 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/12 12:37:53 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/20 12:08:24 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ typedef struct s_player
 {
 	double			x;
 	double			y;
-	int				moveX;
-	int				moveY;
-	double			dirX;
-	double			dirY;
-	double			planeX;
-	double			planeY;
+	int				movex;
+	int				movey;
+	double			dirx;
+	double			diry;
+	double			planex;
+	double			planey;
 	int				rotate;
 	int				is_in_move;
 }					t_player;

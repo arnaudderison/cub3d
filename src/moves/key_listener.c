@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_listener.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:37:55 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/13 11:22:14 by arnaud           ###   ########.fr       */
+/*   Updated: 2025/03/20 12:22:48 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ static int	key_press_handler(int key, t_cub3d *cub3d)
 	// if (key == XK_Escape)
 	// quit and free
 	if (key == XK_w)
-		cub3d->player.moveY = 1;
+		cub3d->player.movey = 1;
 	if (key == XK_s)
-		cub3d->player.moveY = -1;
+		cub3d->player.movey = -1;
 	if (key == XK_d)
-		cub3d->player.moveX = 1;
+		cub3d->player.movex = 1;
 	if (key == XK_a)
-		cub3d->player.moveX = -1;
+		cub3d->player.movex = -1;
 	if (key == XK_Left)
 		cub3d->player.rotate += 1;
 	if (key == XK_Right)
@@ -35,14 +35,14 @@ static int	key_unpress_handler(int key, t_cub3d *cub3d)
 {
 	if (key == XK_Escape)
 		error(SUCCESS, cub3d, &freeall);
-	if (key == XK_w && cub3d->player.moveY == 1)
-		cub3d->player.moveY = 0;
-	if (key == XK_s && cub3d->player.moveY == -1)
-		cub3d->player.moveY = 0;
-	if (key == XK_a && cub3d->player.moveX == -1)
-		cub3d->player.moveX += 1;
-	if (key == XK_d && cub3d->player.moveX == 1)
-		cub3d->player.moveX -= 1;
+	if (key == XK_w && cub3d->player.movey == 1)
+		cub3d->player.movey = 0;
+	if (key == XK_s && cub3d->player.movey == -1)
+		cub3d->player.movey = 0;
+	if (key == XK_a && cub3d->player.movex == -1)
+		cub3d->player.movex += 1;
+	if (key == XK_d && cub3d->player.movex == 1)
+		cub3d->player.movex -= 1;
 	if (key == XK_Left && cub3d->player.rotate <= 1)
 		cub3d->player.rotate = 0;
 	if (key == XK_Right && cub3d->player.rotate >= -1)
@@ -76,7 +76,7 @@ static int	mouse_handler(int x, int y, t_cub3d *cub3d)
 	else if (x > old_x)
 		cub3d->player.is_in_move += rotate_player(cub3d, -1);
 	old_x = x;
-	return (0);;
+	return (0);
 }
 
 void	key_listener(t_cub3d *cub3d)

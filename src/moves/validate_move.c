@@ -6,27 +6,27 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:04:41 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/12 13:15:38 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/20 12:22:55 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static bool is_wall(t_cub3d *cub3d, double x, double y)
+static bool	is_wall(t_cub3d *cub3d, double x, double y)
 {
-	if(cub3d->map.matrice[(int)y][(int)x] == '1')
+	if (cub3d->map.matrice[(int)y][(int)x] == '1')
 		return (true);
 	return (false);
 }
 
 static bool	is_valid_pos(t_cub3d *cub3d, double x, double y)
 {
-	bool wall;
-	bool map;
+	bool	wall;
+	bool	map;
 
 	map = true;
 	wall = false;
-	if(BONUS)
+	if (BONUS)
 		wall = is_wall(cub3d, x, y);
 	if (x < 1.25 || x >= cub3d->map.width - 2.25)
 		map = false;
