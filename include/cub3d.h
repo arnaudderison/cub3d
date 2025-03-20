@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:05:48 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/20 13:27:17 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:20:23 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # include <math.h>
 # include <stdbool.h>
 
-# define WIN_WIDTH 1820
-# define WIN_HEIGHT 980
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
 
 # define TEX_SIZE 64
 
@@ -104,6 +104,9 @@ unsigned int	random2d(int x, int y);
 
 // door
 bool			player_near_door(t_player *player, int porteX, int porteY);
+bool			is_door(t_cub3d *cub3d, int x, int y);
+bool			is_close_door(t_cub3d *cub3d, int x, int y);
+void			toggle_door(t_cub3d *cub3d, int x, int y);
 
 // moves
 int				move_player(t_cub3d *cub3d);

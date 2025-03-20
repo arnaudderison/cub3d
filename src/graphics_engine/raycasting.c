@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 16:56:36 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/20 12:17:14 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:17:44 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,12 @@ static void	dda(t_cub3d *cub3d, t_radius *rad)
 			rad->side = 1;
 		}
 		if (rad->mapy < 0.25 || rad->mapy < 0.25
-			|| rad->mapy > cub3d->map.height - 0.25
+			|| rad->mapy > cub3d->map.height - 0.25 
 			|| rad->mapy > cub3d->map.width - 1.25)
 			break ;
-		if(cub3d->map.matrice[rad->mapy][rad->mapx] == 'D' || cub3d->map.matrice[rad->mapy][rad->mapx] == 'O')
-		{
-			if(player_near_door(&cub3d->player, rad->mapx, rad->mapy))
-				cub3d->map.matrice[rad->mapy][rad->mapx] = 'O';
-			else
-				cub3d->map.matrice[rad->mapy][rad->mapx] = 'D';
-		}
-		if (cub3d->map.matrice[rad->mapy][rad->mapx] == '1' || cub3d->map.matrice[rad->mapy][rad->mapx] == 'D')
+		if(is_door(cub3d, rad->mapx, rad->mapy))
+			toggle_door(cub3d, rad->mapx, rad->mapy);
+		if (cub3d->map.matrice[rad->mapy][rad->mapx] == '1' || is_close_door(cub3d, rad->mapx, rad->mapy))
 			hit = 1;
 	}
 }

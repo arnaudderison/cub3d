@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 16:15:26 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/20 13:27:25 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:24:34 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	set_image_pixels(t_cub3d *cub3d, t_img *image, int x, int y)
 		if (random2d(x, y) % 666 < 4)
 			draw_star(cub3d, image, x, y);
 		else
-			set_image_pixel(image, x, y, 0x121212);
+			set_image_pixel(image, x, y,  cub3d->datatex.hex_ceiling);
 	}
 	else if (y < WIN_HEIGHT - 1 && x % 3 == 0)
 		set_image_pixel(image, x, y, cub3d->datatex.hex_floor);

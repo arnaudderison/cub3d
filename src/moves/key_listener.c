@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:37:55 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/20 12:22:48 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:04:37 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static int	key_press_handler(int key, t_cub3d *cub3d)
 {
-	// if (key == XK_Escape)
-	// quit and free
 	if (key == XK_w)
 		cub3d->player.movey = 1;
 	if (key == XK_s)
