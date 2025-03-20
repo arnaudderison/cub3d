@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:04:41 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/20 12:22:55 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/20 13:33:36 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static bool	is_valid_pos(t_cub3d *cub3d, double x, double y)
 
 int	validate_move(t_cub3d *cub3d, double new_x, double new_y)
 {
-	int moved;
+	int	moved;
 
 	moved = 0;
 	if (is_valid_pos(cub3d, new_x, cub3d->player.y))

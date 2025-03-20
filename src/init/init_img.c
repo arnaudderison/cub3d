@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 20:26:36 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/07 19:22:17 by arnaud           ###   ########.fr       */
+/*   Updated: 2025/03/20 13:31:56 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	create_img_from_xpm(t_cub3d *cub3d, t_img *img, char *path)
 	if (!img->img)
 		error(PTR_NULL, cub3d, &destroy_win);
 	img->addr = (int *)mlx_get_data_addr(img->img, &img->pixel_bits,
-		&img->size_line, &img->endian);
+			&img->size_line, &img->endian);
 }
 
 void	init_img(t_cub3d *cub3d, t_img *image, int width, int height)
@@ -34,6 +34,6 @@ void	init_img(t_cub3d *cub3d, t_img *image, int width, int height)
 	// if (image->img == NULL)
 	// free ? et exit
 	image->addr = (int *)mlx_get_data_addr(image->img, &image->pixel_bits,
-		&image->size_line, &image->endian);
+			&image->size_line, &image->endian);
 	return ;
 }

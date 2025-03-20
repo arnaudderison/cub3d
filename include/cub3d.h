@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:05:48 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/20 12:04:55 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/20 13:27:17 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@
 # define MOVESPEED 0.2
 # define ROTSPEED 0.02
 # define DIST_EDGE_MOUSE_WRAP 50
+
+# define MMAP_COLOR_PLAYER 0x27AE60
+# define MMAP_COLOR_WALL 0x2C3E50
+# define MMAP_COLOR_FLOOR 0xE6E6E6
+# define MMAP_COLOR_SPACE 0x7F8C8D
 
 # ifndef BONUS
 #  define BONUS 1
@@ -94,6 +99,8 @@ void			update_modify_textures(t_cub3d *cub3d, t_textures *tex,
 t_status		raycasting(t_player *player, t_cub3d *cub3d);
 void			set_image_pixel(t_img *image, int x, int y, int color);
 int				render(t_cub3d *cub3d);
+void			draw_star(t_cub3d *cub3d, t_img *image, int x, int y);
+unsigned int	random2d(int x, int y);
 
 // door
 bool			player_near_door(t_player *player, int porteX, int porteY);

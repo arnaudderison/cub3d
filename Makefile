@@ -6,7 +6,7 @@
 #    By: aderison <aderison@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/05 19:00:25 by aderison          #+#    #+#              #
-#    Updated: 2025/03/15 19:47:00 by aderison         ###   ########.fr        #
+#    Updated: 2025/03/20 13:28:02 by aderison         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ CUBE_SRCS = src/main.c \
 			src/graphics_engine/raycasting.c \
 			src/graphics_engine/set_image_pixel.c \
 			src/graphics_engine/update_modify_texture.c \
+			src/graphics_engine/magic_ceiling.c \
 			src/moves/handler_move.c \
 			src/moves/key_listener.c \
 			src/moves/validate_move.c \

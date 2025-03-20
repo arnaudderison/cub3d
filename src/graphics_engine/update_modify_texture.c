@@ -6,13 +6,13 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:26:10 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/20 12:19:14 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/20 13:31:20 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static bool is_door(t_cub3d *cub3d, int x, int y)
+static bool	is_door(t_cub3d *cub3d, int x, int y)
 {
 	return (cub3d->map.matrice[y][x] == 'D');
 }
@@ -54,7 +54,7 @@ void	update_modify_textures(t_cub3d *cub3d, t_textures *tex, t_radius *rad,
 		tex->y = (int)tex->pos & (TEX_SIZE - 1);
 		tex->pos += tex->step;
 		color = cub3d->textures[tex->index][TEX_SIZE * tex->y + tex->x];
-		if(is_door(cub3d, rad->mapx, rad->mapy))
+		if (is_door(cub3d, rad->mapx, rad->mapy))
 			color = 0x11111111;
 		if (color > 0)
 			cub3d->modify_textures[y][x] = color;
