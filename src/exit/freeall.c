@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy_win.c                                      :+:      :+:    :+:   */
+/*   freeall.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/05 19:11:38 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/21 16:27:00 by aderison         ###   ########.fr       */
+/*   Created: 2025/03/12 12:18:15 by aderison          #+#    #+#             */
+/*   Updated: 2025/03/20 13:04:34 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	destroy_win(t_cub3d *cub3d)
+void	freeall(t_cub3d *cub3d)
 {
 	if (!cub3d)
-		exit(1);
-	if (cub3d->win.window && cub3d->win.mlx)
-		mlx_destroy_window(cub3d->win.mlx, cub3d->win.window);
-	if (cub3d->win.mlx)
-	{
-		mlx_destroy_display(cub3d->win.mlx);
-		mlx_loop_end(cub3d->win.mlx);
-		ft_free(1, &(cub3d->win.mlx));
-	}
+		exit(EXIT_FAILURE);
+	if (cub3d->textures)
+		ft_free_matrice(1, &cub3d->textures);
+	if (cub3d->modify_textures)
+		ft_free_matrice(1, &cub3d->modify_textures);
+	if (cub3d->minimap.map)
+		ft_free_matrice(1, &cub3d->minimap.map);
+	destroy_win(cub3d);
 }

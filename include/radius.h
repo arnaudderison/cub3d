@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy_win.c                                      :+:      :+:    :+:   */
+/*   radius.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/05 19:11:38 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/21 16:27:00 by aderison         ###   ########.fr       */
+/*   Created: 2025/03/12 12:50:12 by aderison          #+#    #+#             */
+/*   Updated: 2025/03/20 20:38:13 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef RADIUS_H
+# define RADIUS_H
 
-void	destroy_win(t_cub3d *cub3d)
+typedef struct s_radius
 {
-	if (!cub3d)
-		exit(1);
-	if (cub3d->win.window && cub3d->win.mlx)
-		mlx_destroy_window(cub3d->win.mlx, cub3d->win.window);
-	if (cub3d->win.mlx)
-	{
-		mlx_destroy_display(cub3d->win.mlx);
-		mlx_loop_end(cub3d->win.mlx);
-		ft_free(1, &(cub3d->win.mlx));
-	}
-}
+	double	camerax;
+	double	dirx;
+	double	diry;
+	int		mapx;
+	int		mapy;
+	int		stepx;
+	int		stepy;
+	double	sidedistx;
+	double	sidedisty;
+	double	deltadistx;
+	double	deltadisty;
+	double	wallx;
+	double	wall_dist;
+	int		side;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+}			t_radius;
+
+#endif

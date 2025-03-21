@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: plachard <plachard@student.s19.be>         +#+  +:+       +#+         #
+#    By: aderison <aderison@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/05 19:00:25 by aderison          #+#    #+#              #
-#    Updated: 2025/03/20 22:03:33 by plachard         ###   ########.fr        #
+#    Updated: 2025/03/21 16:24:01 by aderison         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -MD -MP -fsanitize=address 
+CFLAGS = -Wall -Wextra -Werror -g3 -MD -MP
 
 I_LIBFT = ./include/lib/libft/include/
 I_CUBE = ./include/
@@ -48,9 +48,8 @@ NC=\033[0m
 #     src/assets/maps/good/test_whitespace.cub \
 #     src/assets/maps/good/works.cub
 	
-CUBE_SRCS = src/main.c \
-			src/exit/error.c \
-			src/exit/destroy_win.c \
+
+CUBE_SRCS = 
 			src/parsing/parsing.c \
 			src/parsing/init_data.c \
 			src/parsing/init_datatex.c \
@@ -59,7 +58,26 @@ CUBE_SRCS = src/main.c \
 			src/parsing/parse_map.c \
 			src/parsing/init_color.c \
 			src/parsing/utils.c \
-			src/parsing/debug.c 
+			src/parsing/debug.c src/main.c \
+			src/exit/error.c \
+			src/exit/destroy_win.c \
+			src/exit/freeall.c \
+			src/exit/set_errinfo.c \
+			src/init/init_mlx.c \
+			src/init/init_textures.c \
+			src/init/init_img.c \
+			src/init/init_minimap.c \
+			src/graphics_engine/graphics_engine.c \
+			src/graphics_engine/raycasting.c \
+			src/graphics_engine/set_image_pixel.c \
+			src/graphics_engine/update_modify_texture.c \
+			src/graphics_engine/magic_ceiling.c \
+			src/moves/handler_move.c \
+			src/moves/key_listener.c \
+			src/moves/validate_move.c \
+			src/moves/rotate.c \
+			src/minimap/render_minimap.c \
+			src/graphics_engine/door.c
 
 CUBE_OBJS = $(patsubst src/%.c,$(OBJ_DIR)/%.o,$(CUBE_SRCS))
 DEPS = $(CUBE_OBJS:.o=.d)

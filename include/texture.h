@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy_win.c                                      :+:      :+:    :+:   */
+/*   texture.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/05 19:11:38 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/21 16:27:00 by aderison         ###   ########.fr       */
+/*   Created: 2025/03/12 12:46:29 by aderison          #+#    #+#             */
+/*   Updated: 2025/03/20 20:38:17 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef TEXTURE_H
+# define TEXTURE_H
 
-void	destroy_win(t_cub3d *cub3d)
+typedef struct s_textures
 {
-	if (!cub3d)
-		exit(1);
-	if (cub3d->win.window && cub3d->win.mlx)
-		mlx_destroy_window(cub3d->win.mlx, cub3d->win.window);
-	if (cub3d->win.mlx)
-	{
-		mlx_destroy_display(cub3d->win.mlx);
-		mlx_loop_end(cub3d->win.mlx);
-		ft_free(1, &(cub3d->win.mlx));
-	}
-}
+	char			*north;
+	char			*south;
+	char			*west;
+	char			*east;
+	int				x;
+	int				y;
+	double			step;
+	double			pos;
+	int				index;
+	int				*floor;
+	int				*ceiling;
+	unsigned int	hex_ceiling;
+	unsigned int	hex_floor;
+}					t_textures;
+
+#endif

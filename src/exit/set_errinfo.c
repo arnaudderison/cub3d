@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy_win.c                                      :+:      :+:    :+:   */
+/*   set_errinfo.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/05 19:11:38 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/21 16:27:00 by aderison         ###   ########.fr       */
+/*   Created: 2025/03/20 16:54:44 by aderison          #+#    #+#             */
+/*   Updated: 2025/03/20 20:36:06 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	destroy_win(t_cub3d *cub3d)
+void	set_errinfo(t_errinfo *errinfo, int line, char *file)
 {
-	if (!cub3d)
-		exit(1);
-	if (cub3d->win.window && cub3d->win.mlx)
-		mlx_destroy_window(cub3d->win.mlx, cub3d->win.window);
-	if (cub3d->win.mlx)
-	{
-		mlx_destroy_display(cub3d->win.mlx);
-		mlx_loop_end(cub3d->win.mlx);
-		ft_free(1, &(cub3d->win.mlx));
-	}
+	errinfo->file = file;
+	errinfo->line = line;
 }
