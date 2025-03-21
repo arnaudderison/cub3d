@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 01:34:10 by plachard          #+#    #+#             */
-/*   Updated: 2025/03/21 17:49:02 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/21 18:10:07 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ static void	set_player_start(char **data, int x, int y, t_cub3d *cub3d)
 {
 	cub3d->player.x = x;
 	cub3d->player.y = y;
-	printf("LE JOEUR x: %d y: %d\n", x, y);
 	if (ft_strchr("NS", data[y][x]))
 	{
 		if (data[y][x] == 'N')

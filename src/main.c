@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 19:08:38 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/21 17:55:43 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/21 18:09:45 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void free_all(t_cub3d *cub3d)
 	if (cub3d->data)
 		ft_free_matrice(1, &cub3d->data);
 	if (cub3d->map.matrice)
-				ft_free_matrice(1, &cub3d->map.matrice);
+		ft_free_matrice(1, &cub3d->map.matrice);
 	if (&cub3d->datatex != NULL)
 		free_tex(cub3d);
     if(cub3d->textures)
