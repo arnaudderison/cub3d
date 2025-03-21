@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:00:00 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/20 20:37:46 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/21 19:11:32 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static void	update_mmap(t_cub3d *cub3d, t_minimap *m)
 		x = -1;
 		while (++x < m->size)
 		{
+			if(y + m->starty > cub3d->map.height - 1 || x + m->startx > cub3d->map.width - 1)
+				continue ;
 			if (cub3d->map.matrice[y + m->starty][x + m->startx] == '1')
 				m->map[y][x] = '1';
 			else if (cub3d->map.matrice[y + m->starty][x + m->startx] == '0'
@@ -78,15 +80,17 @@ void	init_minimap(t_minimap *minimap, t_cub3d *cub3d)
 	minimap->height = HEIGHT_MM;
 	minimap->view_dist = 5;
 	minimap->size = (2 * minimap->view_dist) + 1;
+	if( minimap->size > cub3d->map.height - 1)
+		printf("on va segv\n");
 	minimap->tile_size = MMAP_SIZE / (2 * minimap->view_dist);
 	minimap->map = create_minimap(cub3d, minimap);
 }
 
 int	maps_engine(t_cub3d *cub3d)
 {
-	cub3d->minimap.startx = get_map_offset(&cub3d->minimap, cub3d->map.width,
+	cub3d->minimap.startx = get_map_offset(&cub3d->minimap, cub3d->map.width - 1,
 			(int)cub3d->player.x);
-	cub3d->minimap.starty = get_map_offset(&cub3d->minimap, cub3d->map.height,
+	cub3d->minimap.starty = get_map_offset(&cub3d->minimap, cub3d->map.height - 1,
 			(int)cub3d->player.y);
 	update_mmap(cub3d, &cub3d->minimap);
 	cub3d->minimap.image = (t_img){0};

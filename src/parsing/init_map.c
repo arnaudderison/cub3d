@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 01:32:43 by plachard          #+#    #+#             */
-/*   Updated: 2025/03/21 18:09:28 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/21 18:41:39 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,20 @@ static t_status	map_alloc(t_cub3d *cub3d)
 t_status	init_map(t_cub3d *cub3d)
 {
 	if (map_alloc(cub3d) != SUCCESS)
+	{
+		printf("map alloc failed\n");
 		return (FAILED);
+	}
 	if (!map_dup(cub3d->data, cub3d))
+	{
+		printf("map dup failed\n");
 		return (FAILED);
+	}
 	if (init_player(cub3d->map.matrice, cub3d) != SUCCESS)
+	{
+		printf("init_player failed\n");
 		return (FAILED);
+	}
 	if (cub3d->player.x == -1 || cub3d->player.y == -1)
 		return (FAILED);
 	return (SUCCESS);
