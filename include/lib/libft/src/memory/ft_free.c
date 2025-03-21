@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.h                                          :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 12:46:29 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/21 16:48:06 by aderison         ###   ########.fr       */
+/*   Created: 2024/05/09 15:45:58 by aderison          #+#    #+#             */
+/*   Updated: 2024/11/05 18:48:36 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEXTURE_H
-# define TEXTURE_H
+#include "../../include/libft.h"
 
-typedef struct s_textures
+void	ft_free(unsigned int count, ...)
 {
-	char			*north;
-	char			*south;
-	char			*west;
-	char			*east;
-	int				x;
-	int				y;
-	double			step;
-	double			pos;
-	int				index;
-	int				*floor;
-	int				*ceiling;
-	unsigned int	hex_ceiling;
-	unsigned int	hex_floor;
-	int				size;
-}					t_textures;
+	va_list	args;
+	void	**tmp;
 
-#endif
+	va_start(args, count);
+	while (count--)
+	{
+		tmp = va_arg(args, void **);
+		if (*tmp)
+		{
+			free(*tmp);
+			(*tmp) = NULL;
+		}
+	}
+	va_end(args);
+}

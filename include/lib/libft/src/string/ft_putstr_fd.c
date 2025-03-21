@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.h                                          :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 12:46:29 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/21 16:48:06 by aderison         ###   ########.fr       */
+/*   Created: 2023/10/23 14:40:51 by arnaud            #+#    #+#             */
+/*   Updated: 2024/05/09 17:56:07 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEXTURE_H
-# define TEXTURE_H
+#include "../../include/libft.h"
 
-typedef struct s_textures
+int	ft_putstr_fd(char const *s, int fd)
 {
-	char			*north;
-	char			*south;
-	char			*west;
-	char			*east;
-	int				x;
-	int				y;
-	double			step;
-	double			pos;
-	int				index;
-	int				*floor;
-	int				*ceiling;
-	unsigned int	hex_ceiling;
-	unsigned int	hex_floor;
-	int				size;
-}					t_textures;
-
-#endif
+	if (!s)
+		return (write(fd, "(null)", ft_strlen("(null)")));
+	return (write(fd, s, ft_strlen(s)));
+}

@@ -6,7 +6,7 @@
 #    By: aderison <aderison@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/05 19:00:25 by aderison          #+#    #+#              #
-#    Updated: 2025/03/21 16:24:01 by aderison         ###   ########.fr        #
+#    Updated: 2025/03/21 17:04:52 by aderison         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,8 +49,7 @@ NC=\033[0m
 #     src/assets/maps/good/works.cub
 	
 
-CUBE_SRCS = 
-			src/parsing/parsing.c \
+CUBE_SRCS = src/parsing/parsing.c \
 			src/parsing/init_data.c \
 			src/parsing/init_datatex.c \
 			src/parsing/init_player.c \

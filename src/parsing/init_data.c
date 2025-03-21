@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plachard <plachard@student.s19.be>         +#+  +:+       +#+        */
+/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 01:17:28 by plachard          #+#    #+#             */
-/*   Updated: 2025/03/20 22:31:46 by plachard         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:52:30 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ t_status	init_data(char *file, t_cub3d *cub3d)
 {
 	int	status;
 
+	if (!file)
+		return (FAILED);
 	status = data_alloc(file, cub3d);
 	if (status != SUCCESS)
 		return (status);

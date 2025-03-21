@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plachard <plachard@student.s19.be>         +#+  +:+       +#+        */
+/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 17:25:27 by plachard          #+#    #+#             */
-/*   Updated: 2025/03/15 18:34:36 by plachard         ###   ########.fr       */
+/*   Updated: 2025/03/21 16:47:49 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,12 @@ static void print_player(t_player player) {
     printf("Player:\n");
     printf("  Position X: %f\n", player.x);
     printf("  Position Y: %f\n", player.y);
-    printf("  MoveX: %d\n", player.moveX);
-    printf("  MoveY: %d\n", player.moveY);
-    printf("  Direction X: %f\n", player.dirX);
-    printf("  Direction Y: %f\n", player.dirY);
-    printf("  Plane X: %f\n", player.planeX);
-    printf("  Plane Y: %f\n", player.planeY);
+    printf("  movex: %d\n", player.movex);
+    printf("  movey: %d\n", player.movey);
+    printf("  Direction X: %f\n", player.dirx);
+    printf("  Direction Y: %f\n", player.diry);
+    printf("  Plane X: %f\n", player.planex);
+    printf("  Plane Y: %f\n", player.planey);
     printf("  Rotate: %d\n", player.rotate);
     printf("  Is in move: %d\n", player.is_in_move);
 }

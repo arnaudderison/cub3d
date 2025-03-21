@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.h                                          :+:      :+:    :+:   */
+/*   ft_u_putnbr_fd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 12:46:29 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/21 16:48:06 by aderison         ###   ########.fr       */
+/*   Created: 2024/04/13 12:10:49 by aderison          #+#    #+#             */
+/*   Updated: 2024/04/13 12:39:39 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEXTURE_H
-# define TEXTURE_H
+#include "../../include/libft.h"
 
-typedef struct s_textures
+static int	u_nbr_len(unsigned int nb)
 {
-	char			*north;
-	char			*south;
-	char			*west;
-	char			*east;
-	int				x;
-	int				y;
-	double			step;
-	double			pos;
-	int				index;
-	int				*floor;
-	int				*ceiling;
-	unsigned int	hex_ceiling;
-	unsigned int	hex_floor;
-	int				size;
-}					t_textures;
+	int	len;
 
-#endif
+	len = 1;
+	while (nb > 9)
+	{
+		len++;
+		nb /= 10;
+	}
+	return (len);
+}
+
+int	ft_u_putnbr_fd(unsigned int nb, int fd)
+{
+	int	len;
+
+	len = u_nbr_len(nb);
+	if (nb > 9)
+	{
+		if (ft_u_putnbr_fd(nb / 10, fd) < 0)
+			return (-1);
+	}
+	if (ft_putchar_fd(nb % 10 + '0', fd) < 0)
+		return (-1);
+	return (len);
+}

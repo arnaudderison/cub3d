@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.h                                          :+:      :+:    :+:   */
+/*   ft_close_pipes.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 12:46:29 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/21 16:48:06 by aderison         ###   ########.fr       */
+/*   Created: 2024/05/10 20:14:02 by aderison          #+#    #+#             */
+/*   Updated: 2024/05/11 23:19:44 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEXTURE_H
-# define TEXTURE_H
+#include "../../include/libft.h"
 
-typedef struct s_textures
+void	ft_close_pipes(int *fds, int count)
 {
-	char			*north;
-	char			*south;
-	char			*west;
-	char			*east;
-	int				x;
-	int				y;
-	double			step;
-	double			pos;
-	int				index;
-	int				*floor;
-	int				*ceiling;
-	unsigned int	hex_ceiling;
-	unsigned int	hex_floor;
-	int				size;
-}					t_textures;
+	int	i;
 
-#endif
+	i = 0;
+	while (i < 2 * (count - 1))
+	{
+		close(fds[i]);
+		i++;
+	}
+}

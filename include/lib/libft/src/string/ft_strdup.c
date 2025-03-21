@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.h                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 12:46:29 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/21 16:48:06 by aderison         ###   ########.fr       */
+/*   Created: 2023/08/30 09:42:18 by arnaud            #+#    #+#             */
+/*   Updated: 2024/10/26 19:20:17 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEXTURE_H
-# define TEXTURE_H
+#include "../../include/libft.h"
 
-typedef struct s_textures
+char	*ft_strdup(const char *str)
 {
-	char			*north;
-	char			*south;
-	char			*west;
-	char			*east;
-	int				x;
-	int				y;
-	double			step;
-	double			pos;
-	int				index;
-	int				*floor;
-	int				*ceiling;
-	unsigned int	hex_ceiling;
-	unsigned int	hex_floor;
-	int				size;
-}					t_textures;
+	int		str_len;
+	char	*dup;
+	int		i;
 
-#endif
+	if (!str)
+		return (NULL);
+	i = -1;
+	str_len = ft_strlen(str);
+	dup = (char *)malloc(sizeof(char) * (str_len + 1));
+	if (!dup)
+		return (NULL);
+	dup[str_len] = '\0';
+	while (++i < str_len)
+		dup[i] = str[i];
+	return (dup);
+}

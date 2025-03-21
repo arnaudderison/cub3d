@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:37:55 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/20 17:43:53 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:50:29 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ static int	mouse_handler(int x, int y, t_cub3d *cub3d)
 	if (x == old_x)
 		return (0);
 	else if (x < old_x)
-		cub3d->player.is_in_move += rotate_player(cub3d, 1);
-	else if (x > old_x)
 		cub3d->player.is_in_move += rotate_player(cub3d, -1);
+	else if (x > old_x)
+		cub3d->player.is_in_move += rotate_player(cub3d, 1);
 	old_x = x;
 	return (0);
 }

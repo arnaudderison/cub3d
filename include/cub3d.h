@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:05:48 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/21 16:25:41 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:03:58 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # include <stdbool.h>
 # include <fcntl.h>
 
-# define WIN_WIDTH 640
-# define WIN_HEIGHT 480
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
 
 # define MAP_WIDTH_MAX 50
 # define MAP_HEIGHT_MAX 50
@@ -68,6 +68,14 @@ typedef struct s_errinfo
 	char		*file;
 }				t_errinfo;
 
+typedef enum	e_wall
+{
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST
+}	t_wall;
+
 typedef struct s_map
 {
 	int			width;
@@ -77,6 +85,7 @@ typedef struct s_map
 
 typedef struct cub3d
 {
+	char		**data;
 	t_player	player;
 	t_map		map;
 	t_radius	radius;
@@ -128,5 +137,21 @@ int				rotate_player(t_cub3d *cub3d, double rotdir);
 void			init_minimap(t_minimap *minimap, t_cub3d *cub3d);
 void			render_minimap(t_cub3d *cub3d, t_minimap *m);
 int				maps_engine(t_cub3d *cub3d);
+
+// parsing
+t_status 			parsing(char **av, t_cub3d *cub3d);
+t_status			init_data(char *file, t_cub3d *cub3d);
+t_status			init_datatex(t_cub3d *cub3d, char **data);
+t_status			init_map(t_cub3d *cub3d);
+t_status			parse_map(t_cub3d *cub3d);
+t_status			init_player(char **map, t_cub3d *cub3d);
+t_status			init_color(t_cub3d *cub3d);
+
+// utils
+bool				is_tex(char *path);
+t_status			is_ext(char *file, bool cub);
+
+	// debug
+void 				print_cub3d(t_cub3d *cub3d);
 
 #endif

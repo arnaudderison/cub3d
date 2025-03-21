@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 20:22:56 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/20 20:37:38 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:01:54 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,12 @@ void	init_textures(t_cub3d *cub3d)
 		set_errinfo(&cub3d->errinfo, __LINE__, __FILE__);
 		error(MALLOC, &cub3d->errinfo, cub3d, &freeall);
 	}
-	cub3d->textures[0] = xpm_to_img(cub3d,
-			"src/assets/textures/simonkraft/respawn_anchor_side0.xpm");
-	cub3d->textures[1] = xpm_to_img(cub3d,
-			"src/assets/textures/simonkraft/respawn_anchor_side2.xpm");
-	cub3d->textures[2] = xpm_to_img(cub3d,
-			"src/assets/textures/simonkraft/respawn_anchor_side3.xpm");
-	cub3d->textures[3] = xpm_to_img(cub3d,
-			"src/assets/textures/simonkraft/respawn_anchor_side4.xpm");
+	cub3d->textures[NORTH] = xpm_to_img(cub3d,
+			cub3d->datatex.north);
+	cub3d->textures[SOUTH] = xpm_to_img(cub3d,
+			cub3d->datatex.south);
+	cub3d->textures[EAST] = xpm_to_img(cub3d,
+			cub3d->datatex.east);
+	cub3d->textures[WEST] = xpm_to_img(cub3d,
+			cub3d->datatex.west);
 }

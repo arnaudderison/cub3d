@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 19:08:38 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/21 16:27:31 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:55:43 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,13 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	print_cub3d(&cub3d);
+	init_mlx(&cub3d);
+	init_textures(&cub3d);
+	init_minimap(&cub3d.minimap, &cub3d);
+	graphics_engine(&cub3d);
+	key_listener(&cub3d);
+	mlx_loop_hook(cub3d.win.mlx, &render, &cub3d);
+	mlx_loop(cub3d.win.mlx);
 	free_all(&cub3d);
 	return (0);
 }
