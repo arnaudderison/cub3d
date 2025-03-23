@@ -14,7 +14,12 @@
 
 static bool	is_open_door(t_cub3d *cub3d, int x, int y)
 {
-	return (cub3d->map.matrice[y][x] == 'D');
+	if (x >= 0 && x < cub3d->map.width && y >= 0 && y < cub3d->map.height)
+	{
+		// ft_printf("x: %d, y: %d \n", x, y);
+		return (cub3d->map.matrice[y][x] == 'D');
+	}
+	return false;
 }
 
 static void	get_texture_index(t_cub3d *cub3d, t_radius *rad)

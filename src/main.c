@@ -39,8 +39,7 @@ static void free_all(t_cub3d *cub3d)
 		ft_free_matrice(1, &cub3d->data);
 	if (cub3d->map.matrice)
 		ft_free_matrice(1, &cub3d->map.matrice);
-	if (&cub3d->datatex != NULL)
-		free_tex(cub3d);
+	free_tex(cub3d);
     if(cub3d->textures)
         ft_free_matrice(1, &cub3d->textures);
     if(cub3d->modify_textures)

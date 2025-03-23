@@ -15,7 +15,10 @@
 static bool	is_wall(t_cub3d *cub3d, double x, double y)
 {
 	if (cub3d->map.matrice[(int)y][(int)x] == '1')
+	{
+		// printf("x: %f y: %f\n", x, y);
 		return (true);
+	}
 	return (false);
 }
 
@@ -26,11 +29,11 @@ static bool	is_valid_pos(t_cub3d *cub3d, double x, double y)
 
 	map = true;
 	wall = false;
-	if (BONUS)
+	if (0)
 		wall = is_wall(cub3d, x, y);
-	if (x < 1.25 || x >= cub3d->map.width - 2.25)
+	if (x < 0.25 || x >= (cub3d->map.width) - 1.25)
 		map = false;
-	if (y < 1.25 || y >= cub3d->map.height - 1.25)
+	if (y < 1.25 || y >= (cub3d->map.height) - 0.25)
 		map = false;
 	return (map && !wall);
 }
@@ -42,11 +45,13 @@ int	validate_move(t_cub3d *cub3d, double new_x, double new_y)
 	moved = 0;
 	if (is_valid_pos(cub3d, new_x, cub3d->player.y))
 	{
+		ft_printf("new x = %d\n", (int)new_x);
 		cub3d->player.x = new_x;
 		moved = 1;
 	}
 	if (is_valid_pos(cub3d, cub3d->player.x, new_y))
 	{
+		ft_printf("new y = %d\n", (int)new_y);
 		cub3d->player.y = new_y;
 		moved = 1;
 	}
