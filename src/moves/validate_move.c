@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_move.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
+/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:04:41 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/20 13:33:36 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:35:56 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 static bool	is_wall(t_cub3d *cub3d, double x, double y)
 {
 	if (cub3d->map.matrice[(int)y][(int)x] == '1')
-	{
-		// printf("x: %f y: %f\n", x, y);
 		return (true);
-	}
 	return (false);
 }
 
@@ -45,13 +42,11 @@ int	validate_move(t_cub3d *cub3d, double new_x, double new_y)
 	moved = 0;
 	if (is_valid_pos(cub3d, new_x, cub3d->player.y))
 	{
-		ft_printf("new x = %d\n", (int)new_x);
 		cub3d->player.x = new_x;
 		moved = 1;
 	}
 	if (is_valid_pos(cub3d, cub3d->player.x, new_y))
 	{
-		ft_printf("new y = %d\n", (int)new_y);
 		cub3d->player.y = new_y;
 		moved = 1;
 	}
