@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_datatex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
+/*   By: plachard <plachard@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 01:29:40 by plachard          #+#    #+#             */
-/*   Updated: 2025/03/21 18:23:27 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/26 17:12:45 by plachard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,19 +54,13 @@ static t_status	assign_color(t_cub3d *cub3d, char *path, char wall)
 	{
 		cub3d->datatex.floor = to_rgb(path);
 		if (!cub3d->datatex.floor)
-		{
-			printf("F failed\n");
 			return (FAILED);
-		}
 	}
 	if (wall == 'C')
 	{
 		cub3d->datatex.ceiling = to_rgb(path);
 		if (!cub3d->datatex.ceiling)
-		{
-			printf("C failed\n");
 			return (FAILED);
-		}
 	}
 	return (SUCCESS);
 }
@@ -74,7 +68,7 @@ static t_status	assign_color(t_cub3d *cub3d, char *path, char wall)
 static char	*assign_tex_path(char *datatex, char *path)
 {
 	if (datatex)
-		return (NULL);
+		return (ft_free(1, &datatex), NULL);
 	path = ft_strtrim(path, " \t");
 	datatex = ft_strdup(path);
 	return (ft_free(1, &path), datatex);
@@ -118,7 +112,6 @@ t_status	init_datatex(t_cub3d *cub3d, char **data)
 	i = 0;
 	while (data[i] && i < 6)
 	{
-		printf("data[%d] = %s\n", i, data[i]);
 		if (is_tex(data[i]))
 		{
 			if (!data[i][3])
