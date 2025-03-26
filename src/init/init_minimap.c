@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:00:00 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/25 15:32:33 by arnaud           ###   ########.fr       */
+/*   Updated: 2025/03/26 19:36:39 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,7 @@ static void	update_mmap(t_cub3d *cub3d, t_minimap *m)
 				continue ;
 			if (cub3d->map.matrice[y + m->starty][x + m->startx] == '1')
 				m->map[y][x] = '1';
-			else if (cub3d->map.matrice[y + m->starty][x + m->startx] == '0'
-				|| cub3d->map.matrice[y + m->starty][x + m->startx] == 'N'
-				|| cub3d->map.matrice[y + m->starty][x + m->startx] == 'S'
-				|| cub3d->map.matrice[y + m->starty][x + m->startx] == 'W'
-				|| cub3d->map.matrice[y + m->starty][x + m->startx] == 'E')
+			else if (cub3d->map.matrice[y + m->starty][x + m->startx])
 				m->map[y][x] = '0';
 			else
 				m->map[y][x] = '\0';

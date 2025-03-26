@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:06:39 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/20 13:07:11 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/26 19:32:53 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ static void	draw_tiles(t_cub3d *cub3d, t_minimap *m, int x, int y)
 			MMAP_COLOR_FLOOR);
 	else if (m->map[y][x] == '1')
 		draw_pixels(cub3d, x * m->tile_size, y * m->tile_size, MMAP_COLOR_WALL);
+	else if (m->map[y][x] == 'D' || m->map[y][x] == 'O')
+		draw_pixels(cub3d, x * m->tile_size, y * m->tile_size, 0x111111);
 	else
 		draw_pixels(cub3d, x * m->tile_size, y * m->tile_size,
 			MMAP_COLOR_SPACE);
