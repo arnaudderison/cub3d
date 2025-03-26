@@ -3,23 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   init_datatex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plachard <plachard@student.s19.be>         +#+  +:+       +#+        */
+/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 01:29:40 by plachard          #+#    #+#             */
-/*   Updated: 2025/03/26 17:12:45 by plachard         ###   ########.fr       */
+/*   Updated: 2025/03/26 17:48:49 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-/* attention si un fdp met un buffer bcp trop long, check si premiere fois
-	qu'on lit tout le fichier gnl renvoi une erreur et la gerer */
-/* attention check strdup calloc pas malloc ou termine la chaine par \0
-	et si la chaine n'existe pas*/
-/* attention retour d'erreur d'atoi,
-	recoder pour que ne soit accepte que les digits */
-
-/* Converts an RGB string to an array of integers. */
 static int	*to_rgb(char *rgb)
 {
 	char	**str_rgb;
