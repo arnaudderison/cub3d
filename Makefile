@@ -6,13 +6,13 @@
 #    By: aderison <aderison@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/05 19:00:25 by aderison          #+#    #+#              #
-#    Updated: 2025/03/21 18:45:31 by aderison         ###   ########.fr        #
+#    Updated: 2025/03/26 15:59:22 by aderison         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -MD -MP
+CFLAGS = -Wall -Wextra -Werror -g3 -MD -MP -O2 -O3 -march=native -funroll-loops -flto -ffast-math
 
 I_LIBFT = ./include/lib/libft/include/
 I_CUBE = ./include/
@@ -21,7 +21,7 @@ OBJ_DIR = obj
 LIBFT_DIR = ./include/lib/libft/
 MLX_DIR = ./include/lib/minilibx-linux/
 LIBFT = $(LIBFT_DIR)libft.a
-MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz 
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz -O2
 
 RED=\033[0;31m
 GREEN=\033[0;32m

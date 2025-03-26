@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:05:48 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/21 17:03:58 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/26 16:13:17 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define KEY_D 2
 # define KEY_W 13
 
-# define MOVESPEED 0.2
+# define MOVESPEED 0.12
 # define ROTSPEED 0.02
 # define DIST_EDGE_MOUSE_WRAP 50
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 19:08:38 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/25 15:38:28 by arnaud           ###   ########.fr       */
+/*   Updated: 2025/03/26 15:26:26 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ int	main(int ac, char **av)
 	if (parsing(av, &cub3d) != SUCCESS)
 	{
 		free_all(&cub3d);
-		write(1, "Error\n", 6);
+		ft_printf("Error\n");
 		return (1);
 	}
-	print_cub3d(&cub3d);
+	// print_cub3d(&cub3d);
 	init_mlx(&cub3d);
 	init_textures(&cub3d);
 	init_minimap(&cub3d.minimap, &cub3d);
