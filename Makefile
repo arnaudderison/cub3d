@@ -6,13 +6,13 @@
 #    By: aderison <aderison@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/05 19:00:25 by aderison          #+#    #+#              #
-#    Updated: 2025/03/26 17:30:32 by aderison         ###   ########.fr        #
+#    Updated: 2025/03/26 17:46:12 by aderison         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -MD -MP -O2 -O3 -march=native -funroll-loops -flto -ffast-math -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 -MD -MP -O2 -O3 -march=native -funroll-loops -flto -ffast-math
 
 I_LIBFT = ./include/lib/libft/include/
 I_CUBE = ./include/
@@ -57,7 +57,7 @@ CUBE_SRCS = src/parsing/parsing.c \
 			src/parsing/parse_map.c \
 			src/parsing/init_color.c \
 			src/parsing/utils.c \
-			src/parsing/debug.c src/main.c \
+			src/main.c \
 			src/exit/error.c \
 			src/exit/destroy_win.c \
 			src/exit/freeall.c \
