@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
+/*   By: plachard <plachard@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 01:34:10 by plachard          #+#    #+#             */
-/*   Updated: 2025/03/21 18:10:07 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:27:13 by plachard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ t_status	init_player(char **map, t_cub3d *cub3d)
 		j = 0;
 		while (map[i][j] && j < cub3d->map.width)
 		{
-			if (!ft_strchr("10 ", map[i][j]))
+			if ((BONUS == 0 && !ft_strchr("10 ", map[i][j]))
+				|| (BONUS == 1 && !ft_strchr("D10 ", map[i][j])))
 			{
 				if (ft_strchr("NSEW", map[i][j]) && flag_player == 0)
 					flag_player += set_player(map, j, i, cub3d);
