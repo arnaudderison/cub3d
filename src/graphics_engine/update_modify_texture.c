@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_modify_texture.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
+/*   By: arnaud <arnaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:26:10 by arnaud            #+#    #+#             */
-/*   Updated: 2025/03/20 15:16:18 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:36:50 by arnaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,8 @@
 static bool	is_open_door(t_cub3d *cub3d, int x, int y)
 {
 	if (x >= 0 && x < cub3d->map.width && y >= 0 && y < cub3d->map.height)
-	{
-		// ft_printf("x: %d, y: %d \n", x, y);
 		return (cub3d->map.matrice[y][x] == 'D');
-	}
-	return false;
+	return (false);
 }
 
 static void	get_texture_index(t_cub3d *cub3d, t_radius *rad)

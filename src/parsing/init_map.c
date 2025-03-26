@@ -3,14 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
+/*   By: plachard <plachard@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 01:32:43 by plachard          #+#    #+#             */
-/*   Updated: 2025/03/21 18:41:39 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:24:09 by plachard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+// // BONUS
+// static t_status	map_dup(char **data, t_cub3d *cub3d)
+// {
+// 	int	i;
+// 	int	j;
+
+// 	i = 6;
+// 	j = 0;
+// 	while (j < cub3d->map.height && ft_strchr(" 10DNSEW", data[i][0]))
+// 	{
+// 		cub3d->map.matrice[j] = ft_strdup(data[i]);
+// 		if (!cub3d->map.matrice[j])
+// 			return (FAILED);
+// 		++j;
+// 		++i;
+// 	}
+// 	if (!data[i])
+// 		return (SUCCESS);
+// 	return (FAILED);
+// }
 
 /* Extrait la carte à partir des données brutes et
 l'enregistre dans `cub3d->map.matrice`. */
@@ -21,7 +42,9 @@ static t_status	map_dup(char **data, t_cub3d *cub3d)
 
 	i = 6;
 	j = 0;
-	while (j < cub3d->map.height && ft_strchr(" 10NSEW", data[i][0]))
+	while (j < cub3d->map.height
+		&& ((BONUS == 0 && ft_strchr(" 10NSEW", data[i][0]))
+		|| (BONUS == 1 && ft_strchr(" 10DNSEW", data[i][0]))))
 	{
 		cub3d->map.matrice[j] = ft_strdup(data[i]);
 		if (!cub3d->map.matrice[j])
