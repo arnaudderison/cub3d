@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:04:41 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/20 13:33:36 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/25 11:53:18 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static bool	is_valid_pos(t_cub3d *cub3d, double x, double y)
 
 	map = true;
 	wall = false;
-	if (0)
+	if (BONUS)
 		wall = is_wall(cub3d, x, y);
 	if (x < 0.25 || x >= (cub3d->map.width) - 1.25)
 		map = false;
