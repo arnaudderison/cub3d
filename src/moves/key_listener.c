@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:37:55 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/21 17:50:29 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/26 18:38:29 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static int	key_press_handler(int key, t_cub3d *cub3d)
 	if (key == XK_a)
 		cub3d->player.movex = -1;
 	if (key == XK_Left)
-		cub3d->player.rotate += 1;
-	if (key == XK_Right)
 		cub3d->player.rotate -= 1;
+	if (key == XK_Right)
+		cub3d->player.rotate += 1;
 	return (0);
 }
 
@@ -41,9 +41,9 @@ static int	key_unpress_handler(int key, t_cub3d *cub3d)
 		cub3d->player.movex += 1;
 	if (key == XK_d && cub3d->player.movex == 1)
 		cub3d->player.movex -= 1;
-	if (key == XK_Left && cub3d->player.rotate <= 1)
+	if (key == XK_Left && cub3d->player.rotate >= -1)
 		cub3d->player.rotate = 0;
-	if (key == XK_Right && cub3d->player.rotate >= -1)
+	if (key == XK_Right && cub3d->player.rotate <= 1)
 		cub3d->player.rotate = 0;
 	return (0);
 }
@@ -79,6 +79,7 @@ static int	mouse_handler(int x, int y, t_cub3d *cub3d)
 
 void	key_listener(t_cub3d *cub3d)
 {
+	mlx_hook(cub3d->win.window, 17, 0, &close_win, cub3d);
 	mlx_hook(cub3d->win.window, KeyPress, KeyPressMask, key_press_handler,
 		cub3d);
 	mlx_hook(cub3d->win.window, KeyRelease, KeyReleaseMask, key_unpress_handler,

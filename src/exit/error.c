@@ -6,14 +6,14 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:39:59 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/21 16:26:44 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/26 18:09:17 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 void	error(t_status status, t_errinfo *info, t_cub3d *cub3d,
-void (*callback)(t_cub3d *))
+int (*callback)(t_cub3d *))
 {
 	if (status == MALLOC)
 		ft_printf_fd(2,

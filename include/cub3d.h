@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:05:48 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/26 17:47:56 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/26 18:55:39 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 # define MMAP_COLOR_SPACE 0x7F8C8D
 
 # ifndef BONUS
-#  define BONUS 1
+#  define BONUS 0
 # endif
 
 typedef enum s_status
@@ -101,10 +101,11 @@ typedef struct cub3d
 
 // handle error
 void			error(t_status status, t_errinfo *info, t_cub3d *cub3d,
-					void (*callback)(t_cub3d *));
-void			destroy_win(t_cub3d *cub3d);
-void			freeall(t_cub3d *cub3d);
+					int (*callback)(t_cub3d *));
+int				destroy_win(t_cub3d *cub3d);
+int				freeall(t_cub3d *cub3d);
 void			set_errinfo(t_errinfo *errinfo, int line, char *file);
+int				close_win(t_cub3d *cub3d);
 
 // init
 void			init_mlx(t_cub3d *cub3d);

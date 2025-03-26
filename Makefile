@@ -6,13 +6,14 @@
 #    By: aderison <aderison@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/05 19:00:25 by aderison          #+#    #+#              #
-#    Updated: 2025/03/26 17:46:12 by aderison         ###   ########.fr        #
+#    Updated: 2025/03/26 19:03:42 by aderison         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -MD -MP -O2 -O3 -march=native -funroll-loops -flto -ffast-math
+CFLAGS = -DBONUS=0 -Wall -Wextra -Werror -g3 -MD -MP -O2 -march=native -funroll-loops -flto -ffast-math
+CFLAGB = -DBONUS=1 -Wall -Wextra -Werror -g3 -MD -MP -O2 -march=native -funroll-loops -flto -ffast-math
 
 I_LIBFT = ./include/lib/libft/include/
 I_CUBE = ./include/
@@ -61,6 +62,7 @@ CUBE_SRCS = src/parsing/parsing.c \
 			src/exit/error.c \
 			src/exit/destroy_win.c \
 			src/exit/freeall.c \
+			src/exit/close.c \
 			src/exit/set_errinfo.c \
 			src/init/init_mlx.c \
 			src/init/init_textures.c \
@@ -87,10 +89,10 @@ ANIMATION_PID_FILE = .animation.pid
 # Démarre l'animation
 define start_animation
 	( while :; do \
-		printf "\r${YELLOW}[LIBFT]${CYAN} Compilation... \|"; sleep 0.1; \
-		printf "\r${YELLOW}[LIBFT]${CYAN} Compilation... /"; sleep 0.1; \
-		printf "\r${YELLOW}[LIBFT]${CYAN} Compilation... -"; sleep 0.1; \
-		printf "\r${YELLOW}[LIBFT]${CYAN} Compilation... \\"; sleep 0.1; \
+		printf "\r${YELLOW}[CUB3D]${CYAN} Compilation... \|"; sleep 0.1; \
+		printf "\r${YELLOW}[CUB3D]${CYAN} Compilation... /"; sleep 0.1; \
+		printf "\r${YELLOW}[CUB3D]${CYAN} Compilation... -"; sleep 0.1; \
+		printf "\r${YELLOW}[CUB3D]${CYAN} Compilation... \\"; sleep 0.1; \
 	done ) & \
 	echo $$! > $(ANIMATION_PID_FILE)
 endef
@@ -111,6 +113,11 @@ all: $(NAME)
 $(NAME): libx $(LIBFT) $(CUBE_OBJS)
 	@$(CC) $(CFLAGS) $(INCLUDES) $(CUBE_OBJS) -L$(LIBFT_DIR) $(MLX_FLAGS) -lft -o $@
 	@printf "\r${YELLOW}[CUB3D]${GREEN}    Executable $(NAME) created.\n${NC}"
+
+bonus: fclean libx $(LIBFT) $(CUBE_OBJS)
+	$(CC) $(CFLAGSB) $(INCLUDES) $(CUBE_OBJS) -L$(LIBFT_DIR) $(MLX_FLAGS) -lft -o $(NAME)
+	@printf "\r${YELLOW}[CUB3D]${GREEN}    Executable $(NAME) created (bonus).\n${NC}"
+	@$(call stop_animation)
 
 $(LIBFT):
 	@make -C $(LIBFT_DIR) --no-print-directory

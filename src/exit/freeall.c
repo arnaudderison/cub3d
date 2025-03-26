@@ -6,7 +6,7 @@
 /*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:18:15 by aderison          #+#    #+#             */
-/*   Updated: 2025/03/26 17:47:21 by aderison         ###   ########.fr       */
+/*   Updated: 2025/03/26 18:30:11 by aderison         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	free_tex(t_cub3d *cub3d)
 		ft_free(1, &cub3d->datatex.ceiling);
 }
 
-void	freeall(t_cub3d *cub3d)
+int	freeall(t_cub3d *cub3d)
 {
 	if (!cub3d)
 		exit(EXIT_FAILURE);
@@ -44,4 +44,5 @@ void	freeall(t_cub3d *cub3d)
 		ft_free_matrice(1, &cub3d->map.matrice);
 	free_tex(cub3d);
 	destroy_win(cub3d);
+	return (0);
 }
