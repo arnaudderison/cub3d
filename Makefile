@@ -6,13 +6,13 @@
 #    By: aderison <aderison@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/05 19:00:25 by aderison          #+#    #+#              #
-#    Updated: 2025/03/26 15:59:22 by aderison         ###   ########.fr        #
+#    Updated: 2025/03/26 16:34:27 by aderison         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -MD -MP -O2 -O3 -march=native -funroll-loops -flto -ffast-math
+CFLAGS = -Wall -Wextra -Werror -g3 -MD -MP -O2 -O3 -march=native -funroll-loops -flto -ffast-math -fsanitize=address
 
 I_LIBFT = ./include/lib/libft/include/
 I_CUBE = ./include/
