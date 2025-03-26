@@ -6,14 +6,14 @@
 #    By: aderison <aderison@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/05 19:00:25 by aderison          #+#    #+#              #
-#    Updated: 2025/03/26 19:19:11 by aderison         ###   ########.fr        #
+#    Updated: 2025/03/26 19:27:32 by aderison         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g3 -MD -MP -O2 -march=native -funroll-loops -flto -ffast-math
-BONUS=0
+BONUS ?= 0
 
 I_LIBFT = ./include/lib/libft/include/
 I_CUBE = ./include/
@@ -114,8 +114,8 @@ $(NAME): libx $(LIBFT) $(CUBE_OBJS)
 	@$(CC) $(CFLAGS) -DBONUS=$(BONUS) $(INCLUDES) $(CUBE_OBJS) -L$(LIBFT_DIR) $(MLX_FLAGS) -lft -o $@
 	@printf "\r${YELLOW}[CUB3D]${GREEN}    Executable $(NAME) created.\n${NC}"
 
-bonus:
-	make all BONUS=1
+bonus: fclean
+	@make all BONUS=1
 
 $(LIBFT):
 	@make -C $(LIBFT_DIR) --no-print-directory
