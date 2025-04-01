@@ -37,8 +37,8 @@ static int	move_player_left(t_cub3d *cub3d)
 	double	new_x;
 	double	new_y;
 
-	new_x = cub3d->player.x + cub3d->player.diry * MOVESPEED;
-	new_y = cub3d->player.y - cub3d->player.dirx * MOVESPEED;
+	new_x = cub3d->player.x - cub3d->player.diry * MOVESPEED;
+	new_y = cub3d->player.y + cub3d->player.dirx * MOVESPEED;
 	return (validate_move(cub3d, new_x, new_y));
 }
 
@@ -47,8 +47,8 @@ static int	move_player_right(t_cub3d *cub3d)
 	double	new_x;
 	double	new_y;
 
-	new_x = cub3d->player.x - cub3d->player.diry * MOVESPEED;
-	new_y = cub3d->player.y + cub3d->player.dirx * MOVESPEED;
+	new_x = cub3d->player.x + cub3d->player.diry * MOVESPEED;
+	new_y = cub3d->player.y - cub3d->player.dirx * MOVESPEED;
 	return (validate_move(cub3d, new_x, new_y));
 }
 

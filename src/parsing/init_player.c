@@ -14,25 +14,25 @@
 
 static void	set_player_plane(t_cub3d *cub3d)
 {
-	if (cub3d->player.dirx == NORTH)
+	if (cub3d->player.diry == 1)
 	{
 		cub3d->player.planex = 0.66;
 		cub3d->player.planey = 0;
 	}
-	else if (cub3d->player.dirx == SOUTH)
+	else if (cub3d->player.diry == -1)
 	{
 		cub3d->player.planex = -0.66;
 		cub3d->player.planey = 0;
 	}
-	else if (cub3d->player.diry == EAST)
-	{
-		cub3d->player.planex = 0;
-		cub3d->player.planey = 0.66;
-	}
-	else if (cub3d->player.diry == WEST)
+	else if (cub3d->player.dirx == 1)
 	{
 		cub3d->player.planex = 0;
 		cub3d->player.planey = -0.66;
+	}
+	else if (cub3d->player.dirx == -1)
+	{
+		cub3d->player.planex = 0;
+		cub3d->player.planey = 0.66;
 	}
 }
 
@@ -41,26 +41,24 @@ static void	set_player_plane(t_cub3d *cub3d)
  */
 static void	set_player_start(char **data, int x, int y, t_cub3d *cub3d)
 {
-	cub3d->player.x = x;
-	cub3d->player.y = y;
+	cub3d->player.x = x + 0.5f;
+	cub3d->player.y = y + 0.5f;
 	if (ft_strchr("NS", data[y][x]))
 	{
 		if (data[y][x] == 'N')
-			cub3d->player.dirx = NORTH;
+			cub3d->player.diry = -1;
 		else if (data[y][x] == 'S')
-			cub3d->player.dirx = SOUTH;
-		cub3d->player.diry = -1;
+			cub3d->player.diry = 1;
+		cub3d->player.dirx = 0;
 	}
-	else
+	else if (ft_strchr("EW", data[y][x]))
 	{
 		if (data[y][x] == 'E')
-			cub3d->player.diry = EAST;
+			cub3d->player.dirx = 1;
 		else if (data[y][x] == 'W')
-			cub3d->player.diry = WEST;
-		cub3d->player.dirx = -1;
+			cub3d->player.dirx = -1;
+		cub3d->player.diry = 0;
 	}
-	cub3d->player.x += 0.5f;
-	cub3d->player.y += 0.5f;
 }
 
 static int	set_player(char **data, int x, int y, t_cub3d *cub3d)
