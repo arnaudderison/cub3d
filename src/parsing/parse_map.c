@@ -6,7 +6,7 @@
 /*   By: plachard <plachard@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 21:58:49 by plachard          #+#    #+#             */
-/*   Updated: 2025/03/26 18:00:15 by plachard         ###   ########.fr       */
+/*   Updated: 2025/04/01 15:32:59 by plachard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ static t_status	flood_fill(char **map_cpy, int x, int y, t_cub3d *cub3d)
 		return (FAILED);
 	if (map_cpy[y][x] == '1' || map_cpy[y][x] == 'X')
 		return (SUCCESS);
-	// if (BONUS == 1 && map_cpy[y][x] == 'D')
-	// 	return (SUCCESS);
 	map_cpy[y][x] = 'X';
 	if (!flood_fill(map_cpy, x + 1, y, cub3d))
 		return (FAILED);

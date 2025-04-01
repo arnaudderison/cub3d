@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aderison <aderison@student.s19.be>         +#+  +:+       +#+        */
+/*   By: plachard <plachard@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 01:17:28 by plachard          #+#    #+#             */
-/*   Updated: 2025/03/21 17:52:30 by aderison         ###   ########.fr       */
+/*   Updated: 2025/04/01 15:14:50 by plachard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,18 @@ static int	dup_no_empty_line(char *buffer, t_cub3d *cub3d, int i)
 {
 	char	*cpy;
 
-	cpy = ft_strtrim(buffer, " \t\n");
-	if (ft_strlen(cpy) == 0)
-	{
-		ft_free(2, &cpy, &buffer);
-		return (i);
-	}
 	if (i < 6)
-		cub3d->data[i] = ft_strdup(cpy);
-	else
 	{
-		ft_free(1, &cpy);
-		cpy = ft_strtrim(buffer, "\n");
-		cub3d->data[i] = ft_strdup(cpy);
+		cpy = ft_strtrim(buffer, " \t\n");
+		if (ft_strlen(cpy) == 0)
+		{
+			ft_free(2, &cpy, &buffer);
+			return (i);
+		}
 	}
+	else
+		cpy = ft_strdup(buffer);
+	cub3d->data[i] = ft_strdup(cpy);
 	ft_free(2, &cpy, &buffer);
 	if (!cub3d->data[i])
 		return (-1);
@@ -77,13 +75,19 @@ static int	count_line(char *line, int fd)
 	n = 0;
 	while (line)
 	{
-		tmp = ft_strtrim(line, " \n\t");
-		if (ft_strlen(tmp) > 0)
+		if (n < 6)
+		{
+			tmp = ft_strtrim(line, " \n\t");
+			if (ft_strlen(tmp) > 0)
+				++n;
+			ft_free(1, &tmp);
+		}
+		else
 			++n;
-		ft_free(2, &tmp, &line);
+		ft_free(1, &line);
 		line = get_next_line(fd);
 	}
-	ft_free(2, &tmp, &line);
+	ft_free(1, &line);
 	return (n);
 }
 
