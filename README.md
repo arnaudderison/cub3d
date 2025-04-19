@@ -2,9 +2,11 @@
 
 A 3D graphical project made with **MiniLibX**, inspired by the classic **Wolfenstein 3D** game. This project is part of the 42 core curriculum and introduces fundamental concepts of **raycasting**, **event handling**, and **game rendering**.
 
-![Project Score Screenshot](./preview/score.png)
+![Project Score Screenshot](./.preview/score.png)
 
 ---
+
+S
 
 ## 🌍 Project Overview
 
